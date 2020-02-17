@@ -1,7 +1,6 @@
-{% from "_save_modal.html" import save_modal with context %}
-{% extends "_base.html" %} {% block content %}
+{% from "_save_modal.html" import save_modal with context %} {% extends
+"_base.html" %} {% block content %}
 <div id="editor">
-
 	<!-- Toolbar -->
 	<div id="toolbar">
 		<div class="mt-3 mb-3 text-center">
@@ -14,41 +13,97 @@
 		<hr />
 		<!-- Item Configuration section -->
 		<div id="item_configurations">
-
 			<!-- Title -->
 			<div class="mt-3 mb-3 text-center">
-				<h5><span class="badge badge-light">Item Selected</Select></span></h5>
+				<h5><span class="badge badge-light">Item Selected</span></h5>
 			</div>
-			<hr>
+			<hr />
 
 			<!-- Item selected details -->
 			<div class="ml-2">
 				<h6>
 					<span class="badge badge-secondary">ID</span>
-					<span id="item_configurations_id" class="badge badge-light"></span>
+					<span
+						id="item_configurations_id"
+						class="badge badge-light"
+					></span>
 				</h6>
 				<h6>
 					<span class="badge badge-secondary">Title: </span>
-					<span id="item_configurations_title" class="badge badge-light"></span>
+					<span
+						id="item_configurations_title"
+						class="badge badge-light"
+					></span>
 				</h6>
 			</div>
 
 			<!-- Add sub process button -->
 			<div class="mt-3 mb-3 text-center">
-				<button id="item_configurations_add_sub_diagram" type="button" class="btn btn-primary"
-					onclick="add_diagram_button_handler()">
+				<button
+					id="item_configurations_add_sub_diagram"
+					type="button"
+					class="btn btn-primary"
+					onclick="add_diagram_button_handler()"
+				>
 					Add Sub-Diagram
 				</button>
 			</div>
+		</div>
+
+		<!-- Data association menu -->
+		<div id="data_association_menu">
+			<!-- Title -->
+			<div class="mt-3 mb-3 text-center">
+				<h5><span class="badge badge-light">Associate Data</span></h5>
+				<p>
+					Associate this data flow with the URI of a column or table
+					in your database
+				</p>
+			</div>
+
+			<!-- Selected data flow details -->
+			<div class="mt-3 mb-3 text-center">
+				<!-- Data Flow title -->
+				<h6>
+					<span class="badge badge-secondary">Title: </span>
+					<span
+						id="data_association_menu_title"
+						class="badge badge-light"
+						></span
+					>
+				</h6>
+				<!-- Associated data input -->
+				<h6><span class="badge badge-secondary">Data URI: </span></h6>
+				<!-- Data association form -->
+				<form action="" method="POST" class="form-group p-2">
+					<!-- Email input -->
+					<div class="form-group p-2">
+						<!-- Input -->
+						<input
+							type="text"
+							placeholder="No associated data ..."
+							class="form-control"
+						/>
+						<input
+							type="submit"
+							value="update"
+							class="btn
+								btn-primary float-right mt-2"
+						/>
+					</div>
+				</form>
+			</div>
+			<hr />
 		</div>
 	</div>
 
 	<!-- Graph Container -->
 	<div id="graph_container">
-
 		<!-- Title bar -->
-		<div id="title_bar" class="row justify-content-between p-2 m-1 border-dark">
-
+		<div
+			id="title_bar"
+			class="row justify-content-between p-2 m-1 border-dark"
+		>
 			<!-- Diagram title input -->
 			<div class="col-4">
 				{% set can_edit_title = not diagram or current_user.id == diagram.author %}
@@ -59,13 +114,23 @@
 
 			<!-- Diagram action buttons -->
 			<div class="col-3">
-				<button type="button" class="btn btn-sm btn-success" onclick="show_save_modal()">Save</button>
+				<button
+					type="button"
+					class="btn btn-sm btn-success"
+					onclick="show_save_modal()"
+				>
+					Save
+				</button>
 				{{ save_modal() }}
 
-				<button type="button" class="btn btn-sm btn-info" 
-				onclick="export_diagram_button_handler()">Export</button>
+				<button
+					type="button"
+					class="btn btn-sm btn-info"
+					onclick="export_diagram_button_handler()"
+				>
+					Export
+				</button>
 			</div>
-
 		</div>
 
 		<!-- Graph -->
@@ -84,7 +149,6 @@
 			<!-- hierarchy injected here -->
 		</ul>
 	</div>
-
 </div>
 
 <!-- Load MxGraph Library -->
@@ -94,6 +158,8 @@
 </script>
 <script src="{{ url_for('static', filename='mxgraph-master/javascript/src/js/mxClient.js') }}"></script>
 
+<!-- Compliance Analysis -->
+<script src="{{ url_for('static', filename='js/editor/compliance_analysis.js') }}"></script>
 <!-- Save Diagram -->
 <script src="{{ url_for('static', filename='js/editor/save_diagram.js') }}"></script>
 <!-- Diagram Validation -->

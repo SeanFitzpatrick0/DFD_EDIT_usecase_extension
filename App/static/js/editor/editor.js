@@ -187,10 +187,19 @@ function graph_select(sender, event) {
 		/* Show menu */
 		let item_configuration = document.getElementById("item_configurations");
 		item_configuration.style.display = "block";
+		// Hide data association mene
+		document.getElementById("data_association_menu").style.display = "none";
+	} else if (cells && cells.length == 1 && cells[0].item_type == "flow") {
+		// Single data flow selected
+		let dataflow_name = editor.graph.convertValueToString(cells[0]);
+		show_data_association_menu(dataflow_name);
+		// Hide item configuration menu
+		document.getElementById("item_configurations").style.display = "none";
 	} else {
 		// No or multiple cells selected
-		// Hide configuration menu
+		// Hide all configuration menus
 		document.getElementById("item_configurations").style.display = "none";
+		document.getElementById("data_association_menu").style.display = "none";
 	}
 
 	event.consume();
