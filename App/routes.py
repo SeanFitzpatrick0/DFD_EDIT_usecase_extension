@@ -9,6 +9,7 @@ from App.utils import (get_diagram_editors, get_user_created_diagrams,
                        is_editor, is_author, load_hierarchy, save_graph,
                        add_edit, create_graph_and_children)
 from App.exporter import export_dfd
+from App.compliance_analysis import has_data_uri
 from App import app, bcrypt, db
 
 
@@ -228,3 +229,14 @@ def create_diagram():
 def export_diagram():
     rdf_export = export_dfd(request.json['dfd'])
     return {'success': True, 'rdf': rdf_export}
+
+
+@app.route('/compliance/data_uri_exists', methods=['POST'])
+@login_required
+def uri_exists():
+    try:
+        data_uri = request.json['data_uri']
+        does_exist = has_data_uri(data_uri)
+        return {'success': True, 'exists': does_exist}
+    except:
+        return {'success': False}

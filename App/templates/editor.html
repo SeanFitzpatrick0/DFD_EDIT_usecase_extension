@@ -69,17 +69,19 @@
 					<span
 						id="data_association_menu_title"
 						class="badge badge-light"
-						></span
-					>
+					></span>
 				</h6>
-				<!-- Associated data input -->
 				<h6><span class="badge badge-secondary">Data URI: </span></h6>
 				<!-- Data association form -->
-				<form action="" method="POST" class="form-group p-2">
+				<form
+					class="form-group p-2"
+					onsubmit="update_data_association()"
+				>
 					<!-- Email input -->
 					<div class="form-group p-2">
 						<!-- Input -->
 						<input
+							id="data_association_input"
 							type="text"
 							placeholder="No associated data ..."
 							class="form-control"

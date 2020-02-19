@@ -1,0 +1,892 @@
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix :      <http://www.example.org/my-db/> .
+
+:sales_reports-TriplesMap
+        rr:logicalTable        [ rr:tableName  "sales_reports" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "default" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/sales_reports#default>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "filter_row_source" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/sales_reports#filter_row_source>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "title" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/sales_reports#title>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "display" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/sales_reports#display>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "group_by" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/sales_reports#group_by>
+                               ] ;
+        rr:subjectMap          [ rr:class     :sales_reports ;
+                                 rr:template  "http://www.example.org/my-db/sales_reports/group_by={group_by}"
+                               ] .
+
+:employees-TriplesMap
+        rr:logicalTable        [ rr:tableName  "employees" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "notes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#notes>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "zip_postal_code" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#zip_postal_code>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "email_address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#email_address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "state_province" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#state_province>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "job_title" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#job_title>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "fax_number" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#fax_number>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "mobile_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#mobile_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "city" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#city>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "company" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#company>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "home_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#home_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "web_page" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#web_page>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "first_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#first_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "business_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#business_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "last_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#last_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "attachments" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#attachments>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "country_region" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employees#country_region>
+                               ] ;
+        rr:subjectMap          [ rr:class     :employees ;
+                                 rr:template  "http://www.example.org/my-db/employees/id={id}"
+                               ] .
+
+:inventory_transaction_types-TriplesMap
+        rr:logicalTable        [ rr:tableName  "inventory_transaction_types" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "type_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transaction_types#type_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "id" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transaction_types#id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :inventory_transaction_types ;
+                                 rr:template  "http://www.example.org/my-db/inventory_transaction_types/id={id}"
+                               ] .
+
+:orders_tax_status-TriplesMap
+        rr:logicalTable        [ rr:tableName  "orders_tax_status" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "tax_status_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders_tax_status#tax_status_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "id" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders_tax_status#id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :orders_tax_status ;
+                                 rr:template  "http://www.example.org/my-db/orders_tax_status/id={id}"
+                               ] .
+
+:invoices-TriplesMap  rr:logicalTable  [ rr:tableName
+                          "invoices" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "due_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#due_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "order_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :orders-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#ref-order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "amount_due" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#amount_due>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "tax" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#tax>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "invoice_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#invoice_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "order_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "shipping" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/invoices#shipping>
+                               ] ;
+        rr:subjectMap          [ rr:class     :invoices ;
+                                 rr:template  "http://www.example.org/my-db/invoices/id={id}"
+                               ] .
+
+:purchase_order_status-TriplesMap
+        rr:logicalTable        [ rr:tableName  "purchase_order_status" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "status" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_status#status>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_status#id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :purchase_order_status ;
+                                 rr:template  "http://www.example.org/my-db/purchase_order_status/id={id}"
+                               ] .
+
+:suppliers-TriplesMap
+        rr:logicalTable        [ rr:tableName  "suppliers" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "mobile_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#mobile_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "job_title" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#job_title>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "email_address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#email_address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "state_province" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#state_province>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "notes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#notes>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "business_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#business_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "zip_postal_code" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#zip_postal_code>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "attachments" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#attachments>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "country_region" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#country_region>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "fax_number" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#fax_number>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "web_page" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#web_page>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "company" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#company>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "last_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#last_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "first_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#first_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "city" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#city>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "home_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/suppliers#home_phone>
+                               ] ;
+        rr:subjectMap          [ rr:class     :suppliers ;
+                                 rr:template  "http://www.example.org/my-db/suppliers/id={id}"
+                               ] .
+
+:products-TriplesMap  rr:logicalTable  [ rr:tableName
+                          "products" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "standard_cost" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#standard_cost>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "product_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#product_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "target_level" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#target_level>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "product_code" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#product_code>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "category" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#category>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "description" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#description>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "quantity_per_unit" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#quantity_per_unit>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "discontinued" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#discontinued>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "attachments" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#attachments>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "minimum_reorder_quantity" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#minimum_reorder_quantity>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "supplier_ids" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#supplier_ids>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "reorder_level" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#reorder_level>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "list_price" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/products#list_price>
+                               ] ;
+        rr:subjectMap          [ rr:class     :products ;
+                                 rr:template  "http://www.example.org/my-db/products/id={id}"
+                               ] .
+
+:strings-TriplesMap  rr:logicalTable  [ rr:tableName
+                          "strings" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "string_data" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/strings#string_data>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "string_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/strings#string_id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :strings ;
+                                 rr:template  "http://www.example.org/my-db/strings/string_id={string_id}"
+                               ] .
+
+:order_details-TriplesMap
+        rr:logicalTable        [ rr:tableName  "order_details" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "unit_price" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#unit_price>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "order_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "discount" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#double>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#discount>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "quantity" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#quantity>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "product_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :products-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#ref-product_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "status_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "order_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :orders-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#ref-order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "purchase_order_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#purchase_order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "product_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#product_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "status_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :order_details_status-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#ref-status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "date_allocated" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#date_allocated>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "inventory_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details#inventory_id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :order_details ;
+                                 rr:template  "http://www.example.org/my-db/order_details/id={id}"
+                               ] .
+
+:customers-TriplesMap
+        rr:logicalTable        [ rr:tableName  "customers" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "city" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#city>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "home_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#home_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "state_province" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#state_province>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "last_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#last_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "business_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#business_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "fax_number" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#fax_number>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "job_title" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#job_title>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "attachments" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#attachments>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "web_page" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#web_page>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "notes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#notes>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "country_region" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#country_region>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "email_address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#email_address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "company" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#company>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "first_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#first_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "mobile_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#mobile_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "zip_postal_code" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/customers#zip_postal_code>
+                               ] ;
+        rr:subjectMap          [ rr:class     :customers ;
+                                 rr:template  "http://www.example.org/my-db/customers/id={id}"
+                               ] .
+
+:inventory_transactions-TriplesMap
+        rr:logicalTable        [ rr:tableName  "inventory_transactions" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "product_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :products-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#ref-product_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "customer_order_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :orders-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#ref-customer_order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "transaction_type" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :inventory_transaction_types-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#ref-transaction_type>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "transaction_modified_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#transaction_modified_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "purchase_order_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :purchase_orders-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#ref-purchase_order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "product_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#product_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "comments" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#comments>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "quantity" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#quantity>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "customer_order_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#customer_order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "transaction_type" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#transaction_type>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "transaction_created_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#transaction_created_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "purchase_order_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/inventory_transactions#purchase_order_id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :inventory_transactions ;
+                                 rr:template  "http://www.example.org/my-db/inventory_transactions/id={id}"
+                               ] .
+
+:orders_status-TriplesMap
+        rr:logicalTable        [ rr:tableName  "orders_status" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "status_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders_status#status_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "id" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders_status#id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :orders_status ;
+                                 rr:template  "http://www.example.org/my-db/orders_status/id={id}"
+                               ] .
+
+:purchase_orders-TriplesMap
+        rr:logicalTable        [ rr:tableName  "purchase_orders" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "supplier_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :suppliers-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#ref-supplier_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "payment_amount" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#payment_amount>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "status_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "supplier_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#supplier_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "payment_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#payment_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "status_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :purchase_order_status-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#ref-status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "submitted_by" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#submitted_by>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "created_by" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#created_by>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "submitted_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#submitted_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "approved_by" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#approved_by>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "taxes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#taxes>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "creation_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#creation_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "approved_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#approved_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "shipping_fee" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#shipping_fee>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "payment_method" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#payment_method>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "created_by" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :employees-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#ref-created_by>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "expected_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#expected_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "notes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_orders#notes>
+                               ] ;
+        rr:subjectMap          [ rr:class     :purchase_orders ;
+                                 rr:template  "http://www.example.org/my-db/purchase_orders/id={id}"
+                               ] .
+
+:orders-TriplesMap  rr:logicalTable  [ rr:tableName
+                          "orders" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "ship_zip_postal_code" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ship_zip_postal_code>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "employee_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :employees-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ref-employee_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "ship_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ship_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "shipper_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :shippers-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ref-shipper_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "ship_address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ship_address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "tax_status_id" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#tax_status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "customer_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :customers-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ref-customer_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "ship_state_province" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ship_state_province>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "shipping_fee" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#shipping_fee>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "paid_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#paid_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "payment_type" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#payment_type>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "taxes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#taxes>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "ship_city" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ship_city>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "customer_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#customer_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "tax_rate" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#double>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#tax_rate>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "employee_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#employee_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "status_id" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "ship_country_region" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ship_country_region>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "notes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#notes>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "status_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :orders_status-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ref-status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "tax_status_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :orders_tax_status-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#ref-tax_status_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "order_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#order_date>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "shipper_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#shipper_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "shipped_date" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/orders#shipped_date>
+                               ] ;
+        rr:subjectMap          [ rr:class     :orders ;
+                                 rr:template  "http://www.example.org/my-db/orders/id={id}"
+                               ] .
+
+:employee_privileges-TriplesMap
+        rr:logicalTable        [ rr:tableName  "employee_privileges" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "employee_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :employees-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employee_privileges#ref-employee_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "privilege_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :privileges-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employee_privileges#ref-privilege_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "privilege_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employee_privileges#privilege_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "employee_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/employee_privileges#employee_id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :employee_privileges ;
+                                 rr:template  "http://www.example.org/my-db/employee_privileges/employee_id={employee_id};privilege_id={privilege_id}"
+                               ] .
+
+:privileges-TriplesMap
+        rr:logicalTable        [ rr:tableName  "privileges" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "privilege_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/privileges#privilege_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/privileges#id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :privileges ;
+                                 rr:template  "http://www.example.org/my-db/privileges/id={id}"
+                               ] .
+
+:order_details_status-TriplesMap
+        rr:logicalTable        [ rr:tableName  "order_details_status" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "status_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details_status#status_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/order_details_status#id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :order_details_status ;
+                                 rr:template  "http://www.example.org/my-db/order_details_status/id={id}"
+                               ] .
+
+:purchase_order_details-TriplesMap
+        rr:logicalTable        [ rr:tableName  "purchase_order_details" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "posted_to_inventory" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#posted_to_inventory>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "product_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#product_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "inventory_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#inventory_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "purchase_order_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :purchase_orders-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#ref-purchase_order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "unit_cost" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#unit_cost>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "purchase_order_id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#purchase_order_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "date_received" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#date_received>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "inventory_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :inventory_transactions-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#ref-inventory_id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "quantity" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#quantity>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:joinCondition     [ rr:child   "product_id" ;
+                                                                        rr:parent  "id"
+                                                                      ] ;
+                                                 rr:parentTriplesMap  :products-TriplesMap
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/purchase_order_details#ref-product_id>
+                               ] ;
+        rr:subjectMap          [ rr:class     :purchase_order_details ;
+                                 rr:template  "http://www.example.org/my-db/purchase_order_details/id={id}"
+                               ] .
+
+:shippers-TriplesMap  rr:logicalTable  [ rr:tableName
+                          "shippers" ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "country_region" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#country_region>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "fax_number" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#fax_number>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "job_title" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#job_title>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "city" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#city>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "first_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#first_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "mobile_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#mobile_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "zip_postal_code" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#zip_postal_code>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "state_province" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#state_province>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "notes" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#notes>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "email_address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#email_address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "company" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#company>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "attachments" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#attachments>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "last_name" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#last_name>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "web_page" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#web_page>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "home_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#home_phone>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column    "id" ;
+                                                 rr:datatype  <http://www.w3.org/2001/XMLSchema#integer>
+                                               ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#id>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "address" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#address>
+                               ] ;
+        rr:predicateObjectMap  [ rr:objectMap  [ rr:column  "business_phone" ] ;
+                                 rr:predicate  <http://www.example.org/my-db/shippers#business_phone>
+                               ] ;
+        rr:subjectMap          [ rr:class     :shippers ;
+                                 rr:template  "http://www.example.org/my-db/shippers/id={id}"
+                               ] .

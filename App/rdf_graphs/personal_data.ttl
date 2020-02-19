@@ -1,0 +1,21 @@
+@prefix :      <http://www.example.org/my-db/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dpv: <http://www.w3.org/ns/dpv#> .
+
+<http://www.example.org/my-db/customers#city> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/customers#home_phone> :isOfPersonalDataCategory dpv:TelephoneNumber.
+<http://www.example.org/my-db/customers#state_province> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/customers#last_name> :isOfPersonalDataCategory dpv:Name.
+<http://www.example.org/my-db/customers#business_phone> :isOfPersonalDataCategory dpv:TelephoneNumber.
+<http://www.example.org/my-db/customers#job_title> :isOfPersonalDataCategory dpv:Job.
+<http://www.example.org/my-db/customers#notes> :isOfPersonalDataCategory dpv:Character.
+<http://www.example.org/my-db/customers#country_region> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/customers#address> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/customers#email_address> :isOfPersonalDataCategory dpv:EmailAddress.
+<http://www.example.org/my-db/customers#company> :isOfPersonalDataCategory dpv:Job.
+<http://www.example.org/my-db/customers#first_name> :isOfPersonalDataCategory dpv:Name.
+<http://www.example.org/my-db/customers#mobile_phone> :isOfPersonalDataCategory  dpv:TelephoneNumber.
+<http://www.example.org/my-db/customers#zip_postal_code> :isOfPersonalDataCategory  dpv:PhysicalAddress.
