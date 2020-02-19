@@ -37,51 +37,76 @@ async function update_data_association() {
 		dataflow_name,
 		"flow"
 	);
+	let current_process_name = get_active_hierarchy_item_and_name()[1];
 
 	// Update data association
 	let input_field = document.getElementById("data_association_input");
 	let data_uri = input_field.value;
 
-	// Remove associated data attribute if empty input
 	if (data_uri.length === 0) {
+		// Remove associated data attribute if empty input
 		delete dataflow.associated_data;
-		return;
+	} else {
+		// Check if data URI exists
+		const check_exists_url = "/compliance/data_uri_exists";
+		let check_response = await fetch(check_exists_url, {
+			method: "POST",
+			credentials: "same-origin",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ data_uri })
+		});
+		let check_result = await check_response.json();
+
+		// Alert User of any errors
+		if (!check_result.success) {
+			alert(`Error: Unable to check if the URI(${data_uri}) exists`);
+		} else if (check_result.success && !check_result.exists) {
+			alert(
+				`Can not associate dataflow with data ${data_uri} as no columns or tables with this URI exist in the database`
+			);
+			input_field.value = "";
+		} else {
+			// Associate data to data flow
+			dataflow.associated_data = data_uri;
+		}
 	}
 
-	// Check if data URI exists
-	const check_exists_uri = "/compliance/data_uri_exists";
-	let check_response = await fetch(check_exists_uri, {
+	// Update diagram hierarchy
+	save_current_graph(current_process_name);
+	// Render personal data
+	render_personal_data_uses();
+}
+
+async function query_personal_data_uses(dfd) {
+	/**
+	 * Retrieves details on the items in the DFD that use personal data
+	 * @param {Object} dfd Serialize dfd
+	 * @returns {Object} Details on which items use personal data, in form:
+	 * 				{'item_name': {data_uri: , data_name:, personal_data_category: }
+	 * 					null if an error occurred during request
+	 */
+	const data_uses_url = "/compliance/personal_data_uses";
+	let response = await fetch(data_uses_url, {
 		method: "POST",
 		credentials: "same-origin",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ data_uri })
+		body: JSON.stringify({ dfd })
 	});
-	let check_result = await check_response.json();
+	let result = await response.json();
 
-	// Alert User of any errors
-	if (!check_result.success) {
-		alert(`Error: Unable to check if the URI(${data_uri}) exists`);
-		return;
-	} else if (check_result.success && !check_result.exists) {
-		alert(
-			`Can not associate dataflow with data ${data_uri} as no columns or tables with this URI exist in the database`
-		);
-		input_field.value = "";
-		return;
+	// Alert users of errors
+	if (!result.success) {
+		alert("Error: Unable to retrieve data uses");
+		return null;
 	}
-
-	// Associate data to data flow
-	dataflow.associated_data = data_uri;
+	return result;
 }
 
-function make_personal_data_describe_query() {
-	/**
-	 * TODO DOC
-	 */
-}
-
-function render_personal_data() {
+async function render_personal_data_uses() {
 	/**
 	 * TODO
 	 */
+	let dfd = serialize_dfd(hierarchy);
+	let personal_data_uses = await query_personal_data_uses(dfd);
+	console.log("render personal data uses");
 }

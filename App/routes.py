@@ -9,7 +9,7 @@ from App.utils import (get_diagram_editors, get_user_created_diagrams,
                        is_editor, is_author, load_hierarchy, save_graph,
                        add_edit, create_graph_and_children)
 from App.exporter import export_dfd
-from App.compliance_analysis import has_data_uri
+from App.compliance_analysis import has_data_uri, get_personal_data_uses
 from App import app, bcrypt, db
 
 
@@ -238,5 +238,18 @@ def uri_exists():
         data_uri = request.json['data_uri']
         does_exist = has_data_uri(data_uri)
         return {'success': True, 'exists': does_exist}
-    except:
+    except Exception as e:
+        print(e)
+        return {'success': False}
+
+
+@app.route('/compliance/personal_data_uses', methods=['POST'])
+@login_required
+def personal_data_uses():
+    try:
+        serialized_dfd = request.json['dfd']
+        personal_data_uses = get_personal_data_uses(serialized_dfd)
+        return {'success': personal_data_uses}
+    except Exception as e:
+        print(e)
         return {'success': False}

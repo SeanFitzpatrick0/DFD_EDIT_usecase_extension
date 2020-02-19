@@ -1,6 +1,6 @@
 from urllib.parse import quote
 from flask import url_for
-from rdflib import Graph, Namespace, Literal
+from rdflib import Graph, Namespace, Literal, URIRef
 from rdflib.namespace import RDF, RDFS
 from bs4 import BeautifulSoup
 
@@ -10,13 +10,17 @@ DFD = Namespace('https://w3id.org/dfd/')
 
 
 def export_dfd(dfd):
-    # Collect all items in DFD
-    entities, processes, datastores, dataflows = collect_items(dfd)
-
-    # Create turtle RDF
-    rdf_graph = create_rdf_graph(entities, processes, datastores, dataflows)
+    rdf_graph = create_dfd_rdf(dfd)
     turtle = rdf_graph.serialize(format='turtle').decode()
     return turtle
+
+
+def create_dfd_rdf(dfd):
+    # Collect all items in DFD
+    entities, processes, datastores, dataflows = collect_items(dfd)
+    # Create RDF
+    rdf_graph = create_rdf_graph(entities, processes, datastores, dataflows)
+    return rdf_graph
 
 
 def collect_items(hierarchy):
@@ -24,7 +28,8 @@ def collect_items(hierarchy):
     entities = set()    # Entity names
     processes = {}      # Process name (key) and parent name or None (value)
     datastores = set()  # Datastore names
-    dataflows = set()   # Tuples in the form (flow name, source name, target name)
+    # Tuples in the form (flow name, source name, target name, associated data)
+    dataflows = set()
 
     # Is sub process
     parent = None if hierarchy['title'] == 'Context diagram' else hierarchy['title']
@@ -48,7 +53,8 @@ def collect_items(hierarchy):
         label = flow.get('value')
         source = graph.find(attrs={'id': flow.get('source')}).get('label')
         target = graph.find(attrs={'id': flow.get('target')}).get('label')
-        dataflows.add((label, source, target))
+        associated_data = flow.get('associated_data')
+        dataflows.add((label, source, target, associated_data))
 
     # Collect items in sub processes and merge them
     for child in hierarchy['children']:
@@ -86,10 +92,14 @@ def create_rdf_graph(entities, processes, datastores, dataflows):
                 (BASE[quote(process)], DFD.subProcessOf, BASE[quote(parent)]))
 
     # Define DataFlows
-    for i, (label, source, target) in enumerate(dataflows):
+    for i, (label, source, target, associated_data) in enumerate(dataflows):
         graph.add((BASE[f'f{i}'], RDF.type, DFD.DataFlow))
         graph.add((BASE[f'f{i}'], RDFS.label, Literal(label)))
         graph.add((BASE[f'f{i}'], DFD['from'], BASE[quote(source)]))
         graph.add((BASE[f'f{i}'], DFD.to, BASE[quote(target)]))
+
+        if associated_data:
+            graph.add((BASE[f'f{i}'], BASE.associatedData,
+                       URIRef(associated_data)))
 
     return graph
