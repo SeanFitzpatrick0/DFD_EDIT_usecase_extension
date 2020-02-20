@@ -14,6 +14,18 @@ var editor;
 */
 var hierarchy = {};
 
+/* This data structure holds info on which items use personal data.
+	This contains value in the form:
+	{
+		item_name: {
+			data_name: (String name of data)
+			data_uri: (Sting URI of data)
+			personal_data_category: (String URI of data category)
+		}
+	}
+*/
+var personal_data_uses = {};
+
 /* Constants used for cell styles */
 const ID_PERMISSION =
 	"editable=0;movable=0;resizable=0;cloneable=0;deletable=0;";
@@ -23,6 +35,10 @@ const ID_STYLE =
 	"fillColor=#343a40;fontColor=white;strokeColor=#343a40;rounded=1;" +
 	ID_PERMISSION;
 const EDGE_STYLE = "edgeStyle=topToBottomEdgeStyle;";
+
+const PERSONAL_DATA_EDGE_STYLE =
+	EDGE_STYLE + `strokeWidth=2;strokeColor=#FAB641;fontColor=black;`;
+
 const ENTITY_DIMENSIONS = {
 	width: 100,
 	height: 80

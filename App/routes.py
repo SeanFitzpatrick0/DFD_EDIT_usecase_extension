@@ -249,7 +249,7 @@ def personal_data_uses():
     try:
         serialized_dfd = request.json['dfd']
         personal_data_uses = get_personal_data_uses(serialized_dfd)
-        return {'success': personal_data_uses}
+        return {'success': True, 'personal_data_uses': personal_data_uses}
     except Exception as e:
         print(e)
         return {'success': False}

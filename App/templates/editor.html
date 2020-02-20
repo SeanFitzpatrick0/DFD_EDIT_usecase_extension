@@ -7,10 +7,12 @@
 			<h5><span class="badge badge-light">Drag item to graph</span></h5>
 		</div>
 		<hr />
+
 		<div id="toolbar_items">
 			<!-- toolbar injected here -->
 		</div>
 		<hr />
+
 		<!-- Item Configuration section -->
 		<div id="item_configurations">
 			<!-- Title -->
@@ -53,7 +55,7 @@
 		<!-- Data association menu -->
 		<div id="data_association_menu">
 			<!-- Title -->
-			<div class="mt-3 mb-3 text-center">
+			<div class="m-2 text-center">
 				<h5><span class="badge badge-light">Associate Data</span></h5>
 				<p>
 					Associate this data flow with the URI of a column or table
@@ -71,8 +73,9 @@
 						class="badge badge-light"
 					></span>
 				</h6>
-				<h6><span class="badge badge-secondary">Data URI: </span></h6>
+
 				<!-- Data association form -->
+				<h6><span class="badge badge-secondary">Data URI: </span></h6>
 				<form
 					class="form-group p-2"
 					onsubmit="update_data_association()"
@@ -96,6 +99,14 @@
 				</form>
 			</div>
 			<hr />
+
+			<!-- Personal data uses info -->
+			<div id="personal_data_uses_info" class="m-2 text-center">
+				<h5>
+					<span class="badge badge-light">Personal Data Uses</span>
+				</h5>
+				<p id="personal_data_uses_summary"></p>
+			</div>
 		</div>
 	</div>
 
