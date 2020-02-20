@@ -34,17 +34,23 @@ function show_personal_data_uses_info(uses) {
 	 * Show personal data uses summary section
 	 * @param {Object} uses Details of the personal data uses of that item
 	 */
-	// Get readable data category
-	let personal_data_category_name = uses.personal_data_category
-		.split("#")
-		.pop();
 	// Set summary content
 	document.getElementById(
 		"personal_data_uses_summary"
-	).innerHTML = `This data flow uses the column 
-		<span class="badge badge-light">${uses.data_name}</span> (${uses.data_uri}) 
-		which uses the personal data 
-		<a href=${uses.personal_data_category}>${personal_data_category_name}</a>.`;
+	).innerHTML = `This data flow uses the ${
+		uses.data_uri.includes("-TriplesMap") ? "table" : "column"
+	}  <span class="badge badge-light">${uses.data_name}</span> (${
+		uses.data_uri
+	}) which uses the personal data 
+	${
+		uses.personal_data_category
+			.map(category => {
+				let readableName = category.split("#").pop();
+				return `<a href=${category} target="_blank">${readableName}</a>, `;
+			})
+			.join("")
+			.slice(0, -2) // Removing ending ', '
+	}.`;
 	// Make visible
 	document.getElementById("personal_data_uses_info").style.display = "block";
 }
@@ -159,7 +165,7 @@ function _add_personal_data_styles(sub_hierarchy) {
 	 * Recursive helper function that traverses through the DFD
 	 * adding/removing personal data styles
 	 * @param {Object} sub_hierarchy The current process being updated
- 	 */
+	 */
 	// Get graph
 	let graph =
 		sub_hierarchy.name === get_active_hierarchy_item_and_name()[1]

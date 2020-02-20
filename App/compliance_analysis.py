@@ -24,14 +24,24 @@ data_exists_query = prepareQuery('''
 ''', initNs={"rr": RR})
 
 data_uses_query = prepareQuery('''
-    SELECT ?itemName ?data ?dataName ?dataCategory
+    SELECT DISTINCT ?itemName ?data ?dataName ?dataCategory
     WHERE {
         ?item BASE:associatedData ?data .
         ?item rdfs:label ?itemName .
-        ?data BASE:isOfPersonalDataCategory ?dataCategory .
-        ?predicateObjectMap rr:predicate ?data .
-        ?predicateObjectMap rr:objectMap ?columns .
-        ?columns rr:column ?dataName .
+        {
+            ?data BASE:isOfPersonalDataCategory ?dataCategory .
+            ?predicateObjectMap rr:predicate ?data .
+            ?predicateObjectMap rr:objectMap ?columns .
+            ?columns rr:column ?dataName .
+        }
+        UNION
+        {
+            ?data rr:logicalTable ?tablesNames .
+            ?tablesNames rr:tableName ?dataName .
+            ?data rr:predicateObjectMap ?predicateObjectMap .
+            ?predicateObjectMap rr:predicate ?column .
+            ?column BASE:isOfPersonalDataCategory ?dataCategory
+        }
     }
 ''', initNs={'BASE': BASE, 'rdfs': RDFS, 'rr': RR})
 
@@ -48,6 +58,17 @@ def get_personal_data_uses(serialized_dfd):
     merged_graph = db_graph + dfd_graph
     result = merged_graph.query(data_uses_query)
 
-    responce = {item_name.__str__(): {'data_uri': data.__str__(), 'data_name': data_name.__str__(
-    ), 'personal_data_category': personal_data_category.__str__()} for (item_name, data, data_name, personal_data_category) in result}
+    responce = {}
+    for (item_name, data, data_name, personal_data_category) in result:
+        print(personal_data_category)
+        if item_name not in responce:
+            responce[item_name] = {
+                'data_uri': data.__str__(),
+                'data_name': data_name.__str__(),
+                'personal_data_category': [personal_data_category.__str__()]
+            }
+        else:
+            responce[item_name]['personal_data_category'].append(
+                personal_data_category.__str__())
+
     return responce
