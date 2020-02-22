@@ -1,43 +1,46 @@
-function show_data_association_menu(dataflow_name) {
+function show_data_association_menu(item_name, item_type) {
 	/**
 	 * Shows the data association menu and info on personal data uses
-	 * @param {String} dataflow_name The name of the selected data flow
+	 * @param {String} item_name The name of the selected data flow or data store
+	 * @param {String} item_type The type of the selected item
 	 */
-	// Set data flow title
+	// Set item title
 	document.getElementById(
 		"data_association_menu_title"
-	).innerText = dataflow_name;
+	).innerText = item_name;
+	// Set item type
+	document.getElementById("data_association_item_type").innerText =
+		item_type === "flow" ? "data flow" : "data store";
 
 	// Show data association menu
 	/* set existing associated data URI if exists */
 	let input_field = document.getElementById("data_association_input");
-	let dataflow = find_cell_in_graph(
+	let item = find_cell_in_graph(
 		editor.graph.getModel(),
-		dataflow_name,
-		"flow"
+		item_name,
+		item_type
 	);
-	input_field.value = dataflow.associated_data
-		? dataflow.associated_data
-		: "";
+	input_field.value = item.associated_data ? item.associated_data : "";
 	/* make visible */
 	document.getElementById("data_association_menu").style.display = "block";
 
 	// Show / Hide personal data uses info
-	let dataflow_uses = personal_data_uses[dataflow_name];
-	dataflow_uses
-		? show_personal_data_uses_info(dataflow_uses)
+	let data_uses = personal_data_uses[item_name];
+	data_uses
+		? show_personal_data_uses_info(data_uses, item_type)
 		: hide_personal_data_uses_info();
 }
 
-function show_personal_data_uses_info(uses) {
+function show_personal_data_uses_info(uses, item_type) {
 	/**
 	 * Show personal data uses summary section
 	 * @param {Object} uses Details of the personal data uses of that item
+	 * @param {String} item_type The type of the selected item
 	 */
 	// Set summary content
-	document.getElementById(
-		"personal_data_uses_summary"
-	).innerHTML = `This data flow uses the ${
+	document.getElementById("personal_data_uses_summary").innerHTML = `This ${
+		item_type == "flow" ? "data flow" : "data store"
+	} holds the ${
 		uses.data_uri.includes("-TriplesMap") ? "table" : "column"
 	}  <span class="badge badge-light">${uses.data_name}</span> (${
 		uses.data_uri
@@ -65,17 +68,23 @@ function hide_personal_data_uses_info() {
 
 async function update_data_association() {
 	/**
-	 * Updates or Assigns an associated data URI to a data flow
+	 * Updates or Assigns an associated data URI to a data flow or data store
 	 * The user will be alerted if the given URI is not a column or table in the DB
 	 */
 	// Prevent default page refresh on submit
 	this.event.preventDefault();
-	let dataflow_name = document.getElementById("data_association_menu_title")
+	let item_name = document.getElementById("data_association_menu_title")
 		.innerText;
-	let dataflow = find_cell_in_graph(
+	let item_type =
+		document.getElementById("data_association_item_type").innerText ===
+		"data flow"
+			? "flow"
+			: "datastore";
+
+	let item = find_cell_in_graph(
 		editor.graph.getModel(),
-		dataflow_name,
-		"flow"
+		item_name,
+		item_type
 	);
 	let current_process_name = get_active_hierarchy_item_and_name()[1];
 
@@ -85,7 +94,7 @@ async function update_data_association() {
 
 	if (data_uri.length === 0) {
 		// Remove associated data attribute if empty input
-		delete dataflow.associated_data;
+		delete item.associated_data;
 	} else {
 		// Check if data URI exists
 		const check_exists_url = "/compliance/data_uri_exists";
@@ -106,8 +115,8 @@ async function update_data_association() {
 			);
 			input_field.value = "";
 		} else {
-			// Associate data to data flow
-			dataflow.associated_data = data_uri;
+			// Associate data to item
+			item.associated_data = data_uri;
 		}
 	}
 
@@ -117,9 +126,9 @@ async function update_data_association() {
 	await render_personal_data_uses();
 
 	// Show / Hide personal data uses info
-	let dataflow_uses = personal_data_uses[dataflow_name];
-	dataflow_uses
-		? show_personal_data_uses_info(dataflow_uses)
+	let data_uses = personal_data_uses[item_name];
+	data_uses
+		? show_personal_data_uses_info(data_uses)
 		: hide_personal_data_uses_info();
 }
 
@@ -180,6 +189,16 @@ function _add_personal_data_styles(sub_hierarchy) {
 			cell_name in personal_data_uses
 				? (cell.style = PERSONAL_DATA_EDGE_STYLE)
 				: (cell.style = EDGE_STYLE);
+		else if (cell.item_type === "datastore") {
+			/* style container */
+			cell_name in personal_data_uses
+				? (cell.style = PERSONAL_DATA_CONTAINER_STYLE)
+				: (cell.style = CONTAINER_STYLE);
+			/* style id */
+			cell_name in personal_data_uses
+				? (cell.children[0].style = PERSONAL_DATA_ID_STYLE)
+				: (cell.children[0].style = ID_STYLE);
+		}
 	}
 	// Recurs though children diagrams
 	sub_hierarchy.children.forEach(child => _add_personal_data_styles(child));

@@ -37,7 +37,11 @@ const ID_STYLE =
 const EDGE_STYLE = "edgeStyle=topToBottomEdgeStyle;";
 
 const PERSONAL_DATA_EDGE_STYLE =
-	EDGE_STYLE + `strokeWidth=2;strokeColor=#FAB641;fontColor=black;`;
+	EDGE_STYLE + "strokeWidth=2;strokeColor=#FAB641;fontColor=black;";
+const PERSONAL_DATA_CONTAINER_STYLE =
+	CONTAINER_STYLE + "strokeWidth=2;strokeColor=#FAB641;";
+const PERSONAL_DATA_ID_STYLE =
+	ID_STYLE + "fontColor=#FAB641;";
 
 const ENTITY_DIMENSIONS = {
 	width: 100,

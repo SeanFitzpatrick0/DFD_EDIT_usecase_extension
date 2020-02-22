@@ -189,10 +189,15 @@ function graph_select(sender, event) {
 		item_configuration.style.display = "block";
 		// Hide data association mene
 		document.getElementById("data_association_menu").style.display = "none";
-	} else if (cells && cells.length == 1 && cells[0].item_type == "flow") {
-		// Single data flow selected
-		let dataflow_name = editor.graph.convertValueToString(cells[0]);
-		show_data_association_menu(dataflow_name);
+	} else if (
+		cells &&
+		cells.length == 1 &&
+		(cells[0].item_type === "flow" || cells[0].item_type === "datastore")
+	) {
+		// Single data flow or data store selected
+		let item = cells[0];
+		let item_name = editor.graph.convertValueToString(item);
+		show_data_association_menu(item_name, item.item_type);
 		// Hide item configuration menu
 		document.getElementById("item_configurations").style.display = "none";
 	} else {

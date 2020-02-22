@@ -27,7 +27,7 @@ def collect_items(hierarchy):
     # Set items records
     entities = set()    # Entity names
     processes = {}      # Process name (key) and parent name or None (value)
-    datastores = set()  # Datastore names
+    datastores = {}     # Datastore name (key) and associated data (value)
     # Tuples in the form (flow name, source name, target name, associated data)
     dataflows = set()
 
@@ -47,7 +47,9 @@ def collect_items(hierarchy):
 
     for datastore in graph.find_all('datastore'):
         if not datastore.get('from_parent'):
-            datastores.add(datastore.get('label'))
+            label = datastore.get('label')
+            associated_data = datastore.find('mxcell').get('associated_data')
+            datastores[label] = associated_data
 
     for flow in graph.find_all('mxcell', {"item_type": "flow"}):
         label = flow.get('value')
@@ -79,9 +81,12 @@ def create_rdf_graph(entities, processes, datastores, dataflows):
         graph.add((BASE[quote(entity)], RDFS.label, Literal(entity)))
 
     # Define Datastores
-    for datastore in datastores:
+    for datastore, associated_data in datastores.items():
         graph.add((BASE[quote(datastore)], RDF.type, DFD.DataStore))
         graph.add((BASE[quote(datastore)], RDFS.label, Literal(datastore)))
+        if associated_data:
+            graph.add((BASE[quote(datastore)],
+                       BASE.associatedData, URIRef(associated_data)))
 
     # Define Processes
     for process, parent in processes.items():
