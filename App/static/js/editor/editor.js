@@ -254,6 +254,8 @@ function graph_add_or_move(sender, event) {
 
 	/* Save any changes of the current graph to the diagram hierarchy data structure */
 	save_current_graph(active_process_name);
+	/* Update personal data styles */
+	render_personal_data_uses();
 }
 
 function graph_delete(sender, event) {
