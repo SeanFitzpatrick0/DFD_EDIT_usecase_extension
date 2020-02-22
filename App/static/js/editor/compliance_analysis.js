@@ -185,19 +185,26 @@ function _add_personal_data_styles(sub_hierarchy) {
 		let cell = graph.cells[cell_index];
 		let cell_name = editor.graph.convertValueToString(cell);
 
-		if (cell.item_type === "flow")
-			cell_name in personal_data_uses
-				? (cell.style = PERSONAL_DATA_EDGE_STYLE)
-				: (cell.style = EDGE_STYLE);
-		else if (cell.item_type === "datastore") {
-			/* style container */
-			cell_name in personal_data_uses
-				? (cell.style = PERSONAL_DATA_CONTAINER_STYLE)
-				: (cell.style = CONTAINER_STYLE);
-			/* style id */
-			cell_name in personal_data_uses
-				? (cell.children[0].style = PERSONAL_DATA_ID_STYLE)
-				: (cell.children[0].style = ID_STYLE);
+		// Don't change style of highlighted items
+		if (
+			cell.style !== SELECTED_EDGE_STYLE &&
+			cell.style !== SELECTED_CONTAINER_STYLE
+		) {
+			/* style edge */
+			if (cell.item_type === "flow")
+				cell_name in personal_data_uses
+					? (cell.style = PERSONAL_DATA_EDGE_STYLE)
+					: (cell.style = EDGE_STYLE);
+			else if (cell.item_type === "datastore") {
+				/* style container */
+				cell_name in personal_data_uses
+					? (cell.style = PERSONAL_DATA_CONTAINER_STYLE)
+					: (cell.style = CONTAINER_STYLE);
+				/* style id */
+				cell_name in personal_data_uses
+					? (cell.children[0].style = PERSONAL_DATA_ID_STYLE)
+					: (cell.children[0].style = ID_STYLE);
+			}
 		}
 	}
 	// Recurs though children diagrams

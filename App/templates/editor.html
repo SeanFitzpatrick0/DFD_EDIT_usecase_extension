@@ -162,21 +162,37 @@
 
 		<!-- Query Box -->
 		<div id="query_box" class="card border-success" draggable="true">
-				<div class="card-body">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="toggle_query_box()">
-						<span aria-hidden="true">&times;</span>
-					</button>
+			<div class="card-body">
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close"
+					onclick="toggle_query_box()"
+				>
+					<span aria-hidden="true">&times;</span>
+				</button>
 				<h5 class="card-title">Query the DFD</h5>
 				<p class="card-text">
-					Write <a href="#">SPARQL</a> queries in to this sections to preform
-					custom compliance analysis on your DFD. See Example Queries
-					<a href="#">Here</a>.
-					<hr>
+					Write <a href="#TODO">SPARQL</a> queries in to this sections to
+					preform custom compliance analysis on your DFD. See Example
+					Queries <a href="#TODO">Here</a>.
 				</p>
+				<small>Drag this box to move it's position</small>
+				<hr />
 				<form onsubmit="execute_query()">
 					<label for="sqarql_query_area">Enter SPARQL query</label>
-					<textarea id="query_box_input" class="form-control" id="sqarql_query_area" rows="3"></textarea>
-					<input type="submit" value="submit" class="btn btn-success float-right m-2"/>
+					<textarea
+						id="query_box_input"
+						class="form-control"
+						id="sqarql_query_area"
+						rows="3"
+					></textarea>
+					<input
+						type="submit"
+						value="submit"
+						class="btn btn-success float-right m-2"
+					/>
 				</form>
 			</div>
 		</div>

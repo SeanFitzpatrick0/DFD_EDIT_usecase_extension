@@ -40,8 +40,12 @@ const PERSONAL_DATA_EDGE_STYLE =
 	EDGE_STYLE + "strokeWidth=2;strokeColor=#FAB641;fontColor=black;";
 const PERSONAL_DATA_CONTAINER_STYLE =
 	CONTAINER_STYLE + "strokeWidth=2;strokeColor=#FAB641;";
-const PERSONAL_DATA_ID_STYLE =
-	ID_STYLE + "fontColor=#FAB641;";
+const PERSONAL_DATA_ID_STYLE = ID_STYLE + "fontColor=#FAB641;";
+
+const SELECTED_EDGE_STYLE =
+	EDGE_STYLE + "strokeWidth=2;strokeColor=#95d28d;fontColor=black;";
+const SELECTED_CONTAINER_STYLE =
+	CONTAINER_STYLE + "strokeWidth=2;strokeColor=#628f23;";
 
 const ENTITY_DIMENSIONS = {
 	width: 100,

@@ -9,7 +9,7 @@ from App.utils import (get_diagram_editors, get_user_created_diagrams,
                        is_editor, is_author, load_hierarchy, save_graph,
                        add_edit, create_graph_and_children)
 from App.exporter import export_dfd
-from App.compliance_analysis import has_data_uri, get_personal_data_uses
+from App.compliance_analysis import has_data_uri, get_personal_data_uses, perform_user_query
 from App import app, bcrypt, db
 
 
@@ -253,3 +253,16 @@ def personal_data_uses():
     except Exception as e:
         print(e)
         return {'success': False}
+
+
+@app.route('/sparql_query', methods=['POST'])
+@login_required
+def sparql_query():
+    serialized_dfd = request.json['dfd']
+    query = request.json['query']
+
+    try:
+        result = perform_user_query(serialized_dfd, query)
+        return {'success': True, 'result': result}
+    except Exception as e:
+        return {'success': False, 'exception': str(e)}

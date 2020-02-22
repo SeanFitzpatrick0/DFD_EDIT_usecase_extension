@@ -2,7 +2,7 @@ import os
 from rdflib import Graph, Namespace, URIRef
 from rdflib.plugins.sparql import prepareQuery
 from App import app
-from App.exporter import create_dfd_rdf, BASE, RDFS
+from App.exporter import create_dfd_rdf, BASE, RDFS, DFD
 
 # Define namespaces
 RR = Namespace('http://www.w3.org/ns/r2rml#')
@@ -45,6 +45,22 @@ data_uses_query = prepareQuery('''
     }
 ''', initNs={'BASE': BASE, 'rdfs': RDFS, 'rr': RR})
 
+check_item_type_query = prepareQuery('''
+    ASK {
+        ?item a ?type .
+        FILTER ( ?type IN (dfd:Process, dfd:DataStore, dfd:DataFlow, dfd:Interface) )
+    }
+''', initNs={'dfd': DFD})
+
+item_name_query = prepareQuery('''
+    SELECT ?itemName
+    WHERE {
+        ?item rdfs:label ?itemName .
+        ?item a ?type .
+        FILTER ( ?type IN (dfd:Process, dfd:DataStore, dfd:DataFlow, dfd:Interface) )
+    }
+''', initNs={'rdfs': RDFS, 'dfd': DFD})
+
 
 def has_data_uri(data_uri):
     data_uri = URIRef(data_uri)
@@ -60,7 +76,6 @@ def get_personal_data_uses(serialized_dfd):
 
     responce = {}
     for (item_name, data, data_name, personal_data_category) in result:
-        print(personal_data_category)
         if item_name not in responce:
             responce[item_name] = {
                 'data_uri': data.__str__(),
@@ -72,3 +87,33 @@ def get_personal_data_uses(serialized_dfd):
                 personal_data_category.__str__())
 
     return responce
+
+
+def perform_user_query(serialized_dfd, sparql_query):
+    # Create RDF Graphs
+    dfd_graph = create_dfd_rdf(serialized_dfd)
+    merged_graph = db_graph + dfd_graph
+
+    # Preform Query
+    result = merged_graph.query(sparql_query)
+
+    # Create responce for frontend
+    selected_items = set()
+    for entry in result:
+        for item in entry:
+            # Check that use selected valid DFD items
+            item_type_check = merged_graph.query(
+                check_item_type_query, initBindings={'item': item})
+
+            if item_type_check.askAnswer:
+                # query returns iterable, get all items in a list and get the first entry and first item
+                item_name = [name for name in merged_graph.query(
+                    item_name_query, initBindings={'item': item})][0][0].value
+                selected_items.add(item_name)
+
+            else:
+                raise Exception(
+                    'Selected item\'s type is not in [dfd:Process, dfd:DataStore, dfd:DataFlow, dfd:Interface] '
+                    'only DFD items allowed to be selected')
+
+    return list(selected_items)
