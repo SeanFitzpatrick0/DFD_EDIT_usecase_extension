@@ -64,7 +64,20 @@
 	width: 70%;
 }
 
-.query_btn {
+#query_btn {
+	background-color: green;
 	color: white;
-	background-color: #f3964a;
+}
+
+#query_btn.active {
+	color: #3c8011 !important;
+	background-color: #95d28d !important;
+}
+
+#query_box {
+	position: absolute;
+	display: none;
+	width: 20%;
+	min-width: 200px;
+	z-index: 1;
 }
