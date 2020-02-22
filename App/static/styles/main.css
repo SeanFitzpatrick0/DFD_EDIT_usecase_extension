@@ -59,3 +59,12 @@
 	border-radius: 5px;
 	margin: 0.5em;
 }
+
+.sparql_logo {
+	width: 70%;
+}
+
+.query_btn {
+	color: white;
+	background-color: #f3964a;
+}
