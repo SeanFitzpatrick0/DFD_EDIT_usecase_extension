@@ -74,7 +74,7 @@ async function execute_query() {
 function add_selected_styles(sub_hierarchy, selected_items) {
 	/**
 	 * Helper function to add a selected highlight to all items in selected_items
-	 * 	and adds selected styles to hierarchy list items with selected items
+	 * 	and adds selected style to hierarchy list titles with selected items
 	 * @param {Object} sub_hierarchy The current sub diagram.
 	 * @param {selected_items} selected_items a set with names of the items to highlight
 	 */
