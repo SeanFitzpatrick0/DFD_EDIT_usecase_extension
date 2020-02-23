@@ -74,6 +74,7 @@ async function execute_query() {
 function add_selected_styles(sub_hierarchy, selected_items) {
 	/**
 	 * Helper function to add a selected highlight to all items in selected_items
+	 * 	and adds selected styles to hierarchy list items with selected items
 	 * @param {Object} sub_hierarchy The current sub diagram.
 	 * @param {selected_items} selected_items a set with names of the items to highlight
 	 */
@@ -82,17 +83,35 @@ function add_selected_styles(sub_hierarchy, selected_items) {
 		sub_hierarchy.name === get_active_hierarchy_item_and_name()[1]
 			? editor.graph.getModel()
 			: sub_hierarchy.graph_model;
+
 	// Set style for each cell
+	let has_selected_item = false;
 	for (cell_index in graph.cells) {
 		let cell = graph.cells[cell_index];
 		let cell_name = editor.graph.convertValueToString(cell);
 
-		if (selected_items.has(cell_name))
+		if (selected_items.has(cell_name)) {
 			cell.style =
 				cell.item_type === "flow"
 					? SELECTED_EDGE_STYLE
 					: SELECTED_CONTAINER_STYLE;
+			has_selected_item = true;
+		}
 	}
+
+	// Set list item title's style
+	if (has_selected_item) {
+		let list_item_id = `${sub_hierarchy.name}_hierarchy_item`.replace(
+			/[ ]/g,
+			"_"
+		); // replace spaces with underscore
+		let list_item = document.getElementById(list_item_id);
+		let list_item_title = list_item.getElementsByClassName(
+			"hierarchy_item_title"
+		)[0];
+		list_item_title.classList.add("selected");
+	}
+
 	// Recurs though children diagrams
 	sub_hierarchy.children.forEach(child =>
 		add_selected_styles(child, selected_items)
@@ -103,8 +122,14 @@ function remove_selected_styles() {
 	/**
 	 * Removes all selected styles from the DFD and re renders personal data
 	 */
+	// Remove cell highlights
 	_remove_selected_styles(hierarchy);
 	editor.graph.refresh();
+	// Remove hierarchy list highlights
+	Array.prototype.forEach.call(
+		document.getElementsByClassName("hierarchy_item_title"),
+		title => title.classList.remove("selected")
+	);
 	// Re-render personal data that were blocked be selected styles
 	render_personal_data_uses();
 }

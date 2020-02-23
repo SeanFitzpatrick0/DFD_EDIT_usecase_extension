@@ -81,3 +81,9 @@
 	min-width: 200px;
 	z-index: 1;
 }
+
+.hierarchy_item_title.selected {
+	color: #45c421;
+	font-style: italic;
+	font-weight: bold;
+}
