@@ -39,12 +39,12 @@ function show_personal_data_uses_info(uses, item_type) {
 	 */
 	// Set summary content
 	document.getElementById("personal_data_uses_summary").innerHTML = `This ${
-		item_type == "flow" ? "data flow" : "data store"
-	} holds the ${
+		item_type === "flow" ? "data flow" : "data store"
+	} holds the <span class="badge badge-light">${uses.data_name}</span> ${
 		uses.data_uri.includes("-TriplesMap") ? "table" : "column"
-	}  <span class="badge badge-light">${uses.data_name}</span> (${
-		uses.data_uri
-	}) which uses the personal data 
+	} (${uses.data_uri}) which uses the personal data ${
+		uses.personal_data_category.length === 1 ? "category" : "categories"
+	} 
 	${
 		uses.personal_data_category
 			.map(category => {
@@ -128,7 +128,7 @@ async function update_data_association() {
 	// Show / Hide personal data uses info
 	let data_uses = personal_data_uses[item_name];
 	data_uses
-		? show_personal_data_uses_info(data_uses)
+		? show_personal_data_uses_info(data_uses, item_type)
 		: hide_personal_data_uses_info();
 }
 
