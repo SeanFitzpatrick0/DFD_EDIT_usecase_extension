@@ -99,9 +99,13 @@ def perform_user_query(serialized_dfd, sparql_query):
 
     # Create responce for frontend
     selected_items = set()
+    query_results = []
     for entry in result:
+        # Add query result to responce
+        query_results.append(entry.asdict())
+
+        # Check if the user has selected a DFD item
         for item in entry:
-            # Check that use selected valid DFD items
             item_type_check = merged_graph.query(
                 check_item_type_query, initBindings={'item': item})
 
@@ -111,9 +115,4 @@ def perform_user_query(serialized_dfd, sparql_query):
                     item_name_query, initBindings={'item': item})][0][0].value
                 selected_items.add(item_name)
 
-            else:
-                raise Exception(
-                    'Selected item\'s type is not in [dfd:Process, dfd:DataStore, dfd:DataFlow, dfd:Interface] '
-                    'only DFD items allowed to be selected')
-
-    return list(selected_items)
+    return {'query_results': query_results, 'selected_items': list(selected_items)}

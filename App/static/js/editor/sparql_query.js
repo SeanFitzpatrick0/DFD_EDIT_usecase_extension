@@ -28,6 +28,7 @@ function hide_query_box() {
 	query_box.style.display = "none";
 	document.getElementById("query_box_input").value = "";
 	remove_selected_styles();
+	remove_query_results();
 }
 
 async function execute_query() {
@@ -64,7 +65,11 @@ async function execute_query() {
 
 	// Render response
 	if (query_result.success) {
-		add_selected_styles(hierarchy, new Set(query_result.result));
+		show_query_results(query_result.result.query_results);
+		add_selected_styles(
+			hierarchy,
+			new Set(query_result.result.selected_items)
+		);
 		editor.graph.refresh();
 	} else {
 		alert(`Error: ${query_result.exception}`);
@@ -153,6 +158,26 @@ function _remove_selected_styles(sub_hierarchy) {
 	}
 
 	sub_hierarchy.children.forEach(child => _remove_selected_styles(child));
+}
+
+function show_query_results(results) {
+	/**
+	 * Displays the JSON result of the user's query
+	 */
+	document.getElementById("query_result").style.display = "block";
+	document.getElementById("query_result_json").innerText = JSON.stringify(
+		results,
+		null,
+		2
+	);
+}
+
+function remove_query_results() {
+	/**
+	 * Removes the JSON result of the users query
+	 */
+	document.getElementById("query_result").style.display = "none";
+	document.getElementById("query_result_json").innerText = "";
 }
 
 /* Query box drag functionality from: https://jsfiddle.net/robertc/kKuqH/ */

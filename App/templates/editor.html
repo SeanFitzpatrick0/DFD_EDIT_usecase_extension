@@ -180,7 +180,7 @@
 						target="_blank"
 						>SPARQL</a
 					>
-					queries in to this sections to preform custom compliance
+					queries in to this section to preform custom compliance
 					analysis on your DFD. See Example Queries
 					<a href="{{ url_for('home', _anchor='sample_sparql_queries') }}" target="_blank">Here</a>.
 				</p>
@@ -197,9 +197,16 @@
 					<input
 						type="submit"
 						value="submit"
-						class="btn btn-success float-right m-2"
+						class="btn btn-success m-2"
 					/>
 				</form>
+				<div id="query_result">
+					<div class="row">
+						<h6 class="card-subtitle mb-2 text-muted my-auto">Query Result</h6>
+					</div>
+					<hr />
+					<pre id="query_result_json" class="card"></pre>
+				</div>
 			</div>
 		</div>
 
