@@ -45,13 +45,6 @@ data_uses_query = prepareQuery('''
     }
 ''', initNs={'BASE': BASE, 'rdfs': RDFS, 'rr': RR})
 
-check_item_type_query = prepareQuery('''
-    ASK {
-        ?item a ?type .
-        FILTER ( ?type IN (dfd:Process, dfd:DataStore, dfd:DataFlow, dfd:Interface) )
-    }
-''', initNs={'dfd': DFD})
-
 item_name_query = prepareQuery('''
     SELECT ?itemName
     WHERE {
@@ -106,13 +99,11 @@ def perform_user_query(serialized_dfd, sparql_query):
 
         # Check if the user has selected a DFD item
         for item in entry:
-            item_type_check = merged_graph.query(
-                check_item_type_query, initBindings={'item': item})
-
-            if item_type_check.askAnswer:
+            item_name_result = [name for name in merged_graph.query(
+                item_name_query, initBindings={'item': item})]
+            if item_name_result:
                 # query returns iterable, get all items in a list and get the first entry and first item
-                item_name = [name for name in merged_graph.query(
-                    item_name_query, initBindings={'item': item})][0][0].value
+                item_name = item_name_result[0][0].value
                 selected_items.add(item_name)
 
     return {'query_results': query_results, 'selected_items': list(selected_items)}

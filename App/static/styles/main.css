@@ -81,7 +81,7 @@
 	min-width: 200px;
 	z-index: 1;
 	max-height: 80vh;
-	overflow: scroll;
+	overflow: auto;
 }
 
 .hierarchy_item_title.selected {
