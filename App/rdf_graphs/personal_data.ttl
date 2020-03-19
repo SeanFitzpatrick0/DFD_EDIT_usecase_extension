@@ -1,6 +1,7 @@
 @prefix :      <http://www.example.org/test#> .
 @prefix dpv: <http://www.w3.org/ns/dpv#> .
 
+# Customers
 <http://www.example.org/my-db/customers#city> :isOfPersonalDataCategory dpv:PhysicalAddress.
 <http://www.example.org/my-db/customers#home_phone> :isOfPersonalDataCategory dpv:TelephoneNumber.
 <http://www.example.org/my-db/customers#state_province> :isOfPersonalDataCategory dpv:PhysicalAddress.
@@ -15,3 +16,6 @@
 <http://www.example.org/my-db/customers#first_name> :isOfPersonalDataCategory dpv:Name.
 <http://www.example.org/my-db/customers#mobile_phone> :isOfPersonalDataCategory  dpv:TelephoneNumber.
 <http://www.example.org/my-db/customers#zip_postal_code> :isOfPersonalDataCategory  dpv:PhysicalAddress.
+
+# Employees
+<http://www.example.org/my-db/employees#email_address> :isOfPersonalDataCategory dpv:EmailAddress.

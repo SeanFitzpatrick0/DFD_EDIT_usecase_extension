@@ -68,7 +68,7 @@ function hide_personal_data_uses_info() {
 
 async function update_data_association() {
 	/**
-	 * Updates or Assigns an associated data URI to a data flow or data store
+	 * Updates or Assigns an associated data URI to a data flow or data store and all its occurrences
 	 * The user will be alerted if the given URI is not a column or table in the DB
 	 */
 	// Prevent default page refresh on submit
@@ -94,7 +94,16 @@ async function update_data_association() {
 
 	if (data_uri.length === 0) {
 		// Remove associated data attribute if empty input
+		/* remove from selected item */
 		delete item.associated_data;
+		/* remove from all other occurrences */
+		find_all_occurrences(item_name, item_type, hierarchy).forEach(
+			process_name => {
+				let graph = get_hierarchy_diagram(process_name).graph_model;
+				let item = find_cell_in_graph(graph, item_name, item_type);
+				if (item) delete item.associated_data;
+			}
+		);
 	} else {
 		// Check if data URI exists
 		const check_exists_url = "/compliance/data_uri_exists";
@@ -116,7 +125,16 @@ async function update_data_association() {
 			input_field.value = "";
 		} else {
 			// Associate data to item
+			/* add data association to current item */
 			item.associated_data = data_uri;
+			/* add to all other item occurrences */
+			find_all_occurrences(item_name, item_type, hierarchy).forEach(
+				process_name => {
+					let graph = get_hierarchy_diagram(process_name).graph_model;
+					let item = find_cell_in_graph(graph, item_name, item_type);
+					if (item) item.associated_data = data_uri;
+				}
+			);
 		}
 	}
 
