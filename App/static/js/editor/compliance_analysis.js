@@ -100,8 +100,8 @@ async function update_data_association() {
 		find_all_occurrences(item_name, item_type, hierarchy).forEach(
 			process_name => {
 				let graph = get_hierarchy_diagram(process_name).graph_model;
-				let item = find_cell_in_graph(graph, item_name, item_type);
-				if (item) delete item.associated_data;
+				let items = _find_cells_in_graph(graph, item_name, item_type);
+				items.forEach(item => delete item.associated_data);
 			}
 		);
 	} else {
@@ -131,8 +131,8 @@ async function update_data_association() {
 			find_all_occurrences(item_name, item_type, hierarchy).forEach(
 				process_name => {
 					let graph = get_hierarchy_diagram(process_name).graph_model;
-					let item = find_cell_in_graph(graph, item_name, item_type);
-					if (item) item.associated_data = data_uri;
+					let items = _find_cells_in_graph(graph, item_name, item_type);
+					items.forEach(item => item.associated_data = data_uri);	
 				}
 			);
 		}
@@ -227,4 +227,31 @@ function _add_personal_data_styles(sub_hierarchy) {
 	}
 	// Recurs though children diagrams
 	sub_hierarchy.children.forEach(child => _add_personal_data_styles(child));
+}
+
+/**
+ * TODO this is a short term fix and should be changed in the future.
+ * A DFD may use a 2 flows with the same name in the same graph
+ * (i.e for a split or join)
+ * But when adding or removing the associated data the find_cell_in_graph
+ * only returns the first occupance found instead of all.
+ * This function should return all the cells with that name and type in the graph.
+ * Due to deadline I am not able to amend all the area where this function is call
+ * so _find_cells_in_graph will be used as a temporary fix.
+ * (If its project is continued in the future find_cell_in_graph should be amended and
+ *  all places that it is called should be adjusted)
+ */
+function _find_cells_in_graph(graph, cell_name, cell_type) {
+	// validate cell type
+	validate_cell_type(cell_type);
+
+	let cells = [];
+	// Find cell in graph
+	for (key in graph.cells)
+		if (
+			graph.cells[key].item_type == cell_type &&
+			editor.graph.convertValueToString(graph.cells[key]) == cell_name
+		)
+			cells.push(graph.cells[key]);
+	return cells;
 }

@@ -1,0 +1,42 @@
+SELECT DISTINCT ?process ?processName ?dataURI ?dataName 
+WHERE {
+    ?process a dfd:Process .
+    ?process rdfs:label ?processName .
+    ?dataFlow dfd:to ?process .
+    ?dataFlow 
+}
+
+
+PREFIX  BASE: <http://www.example.org/test#>
+
+SELECT DISTINCT ?process ?processName ?data ?dataName ?dataCategory
+WHERE {
+    ?process a dfd:Process .
+    ?process rdfs:label ?processName .
+    ?dataFlow dfd:to ?process .
+    ?dataFlow BASE:associatedData ?data .
+    {
+        ?data BASE:isOfPersonalDataCategory ?dataCategory .
+        ?predicateObjectMap rr:predicate ?data .
+        ?predicateObjectMap rr:objectMap ?columns .
+        ?columns rr:column ?dataName .
+    }
+    UNION
+    {
+        ?data rr:logicalTable ?tablesNames .
+        ?tablesNames rr:tableName ?dataName .
+        ?data rr:predicateObjectMap ?predicateObjectMap .
+        ?predicateObjectMap rr:predicate ?column .
+        ?column BASE:isOfPersonalDataCategory ?dataCategory
+    }
+}
+
+PREFIX  BASE: <http://www.example.org/test#>
+
+SELECT DISTINCT ?process ?processName ?data
+WHERE {
+    ?process a dfd:Process .
+    ?process rdfs:label ?processName .
+    ?dataFlow dfd:to ?process .
+    ?dataFlow BASE:associatedData ?data .
+}
