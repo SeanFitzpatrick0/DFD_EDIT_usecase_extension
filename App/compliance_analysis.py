@@ -16,11 +16,7 @@ db_graph.parse(os.path.join(
 
 # Create prepare queries
 data_exists_query = prepareQuery('''
-    ASK {
-        { ?column rr:predicate ?data_uri . }
-        UNION
-        { ?data_uri rr:logicalTable ?table . }
-    }
+    ASK { ?data_uri rr:logicalTable | ^rr:predicate ?database_item . }
 ''', initNs={"rr": RR})
 
 data_uses_query = prepareQuery('''
@@ -28,20 +24,8 @@ data_uses_query = prepareQuery('''
     WHERE {
         ?item BASE:associatedData ?data .
         ?item rdfs:label ?itemName .
-        {
-            ?data BASE:isOfPersonalDataCategory ?dataCategory .
-            ?predicateObjectMap rr:predicate ?data .
-            ?predicateObjectMap rr:objectMap ?columns .
-            ?columns rr:column ?dataName .
-        }
-        UNION
-        {
-            ?data rr:logicalTable ?tablesNames .
-            ?tablesNames rr:tableName ?dataName .
-            ?data rr:predicateObjectMap ?predicateObjectMap .
-            ?predicateObjectMap rr:predicate ?column .
-            ?column BASE:isOfPersonalDataCategory ?dataCategory
-        }
+        ?data (rr:predicateObjectMap/rr:predicate)?/BASE:isOfPersonalDataCategory  ?dataCategory .
+        ?data rr:logicalTable/rr:tableName | ^rr:predicate/rr:objectMap/rr:column ?dataName .
     }
 ''', initNs={'BASE': BASE, 'rdfs': RDFS, 'rr': RR})
 
