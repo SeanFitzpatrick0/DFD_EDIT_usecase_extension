@@ -10,7 +10,7 @@ RR = Namespace('http://www.w3.org/ns/r2rml#')
 # Load DB graphs
 db_graph = Graph()
 db_graph.parse(os.path.join(app.root_path, 'rdf_graphs',
-                            'northwind_r2rml_mapping.ttl'),  format='turtle')
+                            'database_r2rml_mapping.ttl'),  format='turtle')
 db_graph.parse(os.path.join(
     app.root_path, 'rdf_graphs', 'personal_data.ttl'), format='turtle')
 
