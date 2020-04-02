@@ -1,24 +1,19 @@
-# DFD_Edit
+# DFD_Edit Extension for GDPR-aware DFD Modelling
 
-This tool allows users to model **Data Flow Diagrams** of their systems.
-
-Users can Invite others to collaborate on their DFDs and Export their DFD to an **RDF** representation in **Turtle**.
-
-This tool was created as part of my Final Year Project at Trinity College Dublin. My project is to investigate **Linked Data** representations of DFDs and how they can be used for automatic compliance validation of systems.
+This is an extension of the [base DFD Edit application](https://github.com/SeanFitz1997/DFD_EDIT) to demonstrate the ability for the Linked Data representation of the users DFD to integrate with an RDF representation of their database and with GDPR personal data category definitions. See my report for more details.
 
 ## Screen Shots
 
-### Home page
+### Identify uses of Personal Data
+This extension will allow the user to annotate the data flows and data stores in their DFD with the URI of a column or table in their database.
 
-![Home page](App/static/img/homepage_screenshot.gif)
+![Home page](App/static/img/personal_data_highlight.png)
 
-### Editor
+### Query the Knowledge Base
+By representing the user's DFD and it personal data uses as Linked Data, we can query this Knowledge Base using SPARQL.
+Press the 'Query' button to show a form where you can input SPARQL that you can then execute. This feature will highlight all the items that you select in your query and display the result as JSON.
 
-![Editor](App/static/img/create_dfd_demo.gif)
-
-### Account page
-
-![Account](App/static/img/account_page_screenshot.gif)
+![Editor](App/static/img/query2_screenshot.png)
 
 ## Run Local
 
@@ -81,6 +76,9 @@ This will allow you to access the site at http://127.0.0.1:5000
 ## Whats Here
 ```
 App
+|-rdf-graphs
+|   |- database_r2rml_mapping.ttl (RDF representation of the database)
+|   |- personal_data.ttl (DB annotations of personal data catagories)
 |-static
 |   |- img (site images)
 |   |- js
@@ -92,15 +90,19 @@ App
 |           |- diagram_hierarchy.js (diagram hierarchy getters & setters and diagram switch event handlers)
 |           |- validator.js (validation helper functions)
 |           |- save_graph.js (functions for serializing DFD and making save and export requests)
+|           |- compliance_analysis.js (functions annotation DFD and highlight personal data)
+|           |- sparql_query.js (functions to send SPARQL query requests and display results)
 |       |- account.js (Handles users interactions on the account page)
 |   |- mxgraph-master (mxgraph library used for drag & drop diagram)
 |   |- styles (Custom CSS)
 |- templates
+|- use_case_queries (Sample SPARQL queries and JSON output)
 |- __init__ (App constructor)
 |- models.py (Data models)
 |- routes.py (Route definitions)
 |- forms.py (Form definitions)
 |- exporter.py (RDF export functions)
+|- compliance_analysis.py (Execute users query and personal data uses)
 |- utils.py (Helper functions)
 create_db.py (Creates tables and fill with demo data)
 run.py (Runs server in debug mode)
