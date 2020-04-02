@@ -1,0 +1,42 @@
+PREFIX BASE: <http://www.example.org/test#>
+SELECT DISTINCT ?dataFlow ?sharedData ?thirdParty
+WHERE {
+	?dataFlow a dfd:DataFlow .
+	?dataFlow dfd:to ?thirdParty .
+	?thirdParty a dfd:Interface .
+	?dataFlow BASE:associatedData ?sharedData .
+	?sharedData (rr:predicateObjectMap/rr:predicate)?/BASE:isOfPersonalDataCategory ?category .
+}
+
+[
+  {
+    "dataFlow": "http://www.example.org/test#f37",
+    "sharedData": "http://www.example.org/my-db/employees#email_address",
+    "thirdParty": "http://www.example.org/test#Supplier"
+  },
+  {
+    "dataFlow": "http://www.example.org/test#f15",
+    "sharedData": "http://www.example.org/my-db/customers#address",
+    "thirdParty": "http://www.example.org/test#Shipper"
+  },
+  {
+    "dataFlow": "http://www.example.org/test#f14",
+    "sharedData": "http://www.example.org/my-db/customers#address",
+    "thirdParty": "http://www.example.org/test#Shipper"
+  },
+  {
+    "dataFlow": "http://www.example.org/test#f36",
+    "sharedData": "http://www.example.org/my-db/employees#email_address",
+    "thirdParty": "http://www.example.org/test#Supplier"
+  },
+  {
+    "dataFlow": "http://www.example.org/test#f10",
+    "sharedData": "http://www.example.org/my-db/customers#address",
+    "thirdParty": "http://www.example.org/test#Shipper"
+  },
+  {
+    "dataFlow": "http://www.example.org/test#f2",
+    "sharedData": "http://www.example.org/my-db/employees#email_address",
+    "thirdParty": "http://www.example.org/test#Supplier"
+  }
+]

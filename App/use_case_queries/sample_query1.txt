@@ -1,0 +1,73 @@
+PREFIX BASE: <http://www.example.org/test#>
+SELECT DISTINCT ?item
+WHERE {
+	{ ?item a dfd:DataFlow } UNION { ?item a dfd:DataStore }
+	OPTIONAL { ?item BASE:associatedData ?data . }
+	FILTER (!BOUND(?data))
+}
+
+[
+  {
+    "item": "http://www.example.org/test#f6"
+  },
+  {
+    "item": "http://www.example.org/test#f35"
+  },
+  {
+    "item": "http://www.example.org/test#f25"
+  },
+  {
+    "item": "http://www.example.org/test#f34"
+  },
+  {
+    "item": "http://www.example.org/test#f43"
+  },
+  {
+    "item": "http://www.example.org/test#f28"
+  },
+  {
+    "item": "http://www.example.org/test#f13"
+  },
+  {
+    "item": "http://www.example.org/test#f32"
+  },
+  {
+    "item": "http://www.example.org/test#f19"
+  },
+  {
+    "item": "http://www.example.org/test#f18"
+  },
+  {
+    "item": "http://www.example.org/test#f4"
+  },
+  {
+    "item": "http://www.example.org/test#f0"
+  },
+  {
+    "item": "http://www.example.org/test#f38"
+  },
+  {
+    "item": "http://www.example.org/test#f27"
+  },
+  {
+    "item": "http://www.example.org/test#f23"
+  },
+  {
+    "item": "http://www.example.org/test#f39"
+  },
+  {
+    "item": "http://www.example.org/test#f14"
+  },
+  {
+    "item": "http://www.example.org/test#f10"
+  },
+  {
+    "item": "http://www.example.org/test#f12"
+  },
+  {
+    "item": "http://www.example.org/test#f42"
+  },
+  {
+    "item": "http://www.example.org/test#inventory%20record"
+  }
+]

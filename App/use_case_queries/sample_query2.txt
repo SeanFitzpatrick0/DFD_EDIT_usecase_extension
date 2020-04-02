@@ -1,0 +1,162 @@
+PREFIX BASE: <http://www.example.org/test#>
+SELECT DISTINCT ?process ?processName ?data ?category
+WHERE {
+    ?process a dfd:Process .
+    ?process rdfs:label ?processName .
+    ?process ^dfd:to/BASE:associatedData ?data .
+    ?data (rr:predicateObjectMap/rr:predicate)?/BASE:isOfPersonalDataCategory ?category .
+    ?data rr:logicalTable/rr:tableName | ^rr:predicate/rr:objectMap/rr:column ?dataName .
+}
+
+[
+  {
+    "category": "http://www.w3.org/ns/dpv#EmailAddress",
+    "data": "http://www.example.org/my-db/employees#email_address",
+    "process": "http://www.example.org/test#create%20purchase%20order",
+    "processName": "create purchase order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Job",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#process%20order",
+    "processName": "process order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#PhysicalAddress",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#process%20order",
+    "processName": "process order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Name",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#process%20order",
+    "processName": "process order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#TelephoneNumber",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#process%20order",
+    "processName": "process order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Character",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#process%20order",
+    "processName": "process order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#EmailAddress",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#process%20order",
+    "processName": "process order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#PhysicalAddress",
+    "data": "http://www.example.org/my-db/customers#address",
+    "process": "http://www.example.org/test#create%20delivery%20order",
+    "processName": "create delivery order"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Job",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#record%20new%20customer",
+    "processName": "record new customer"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#PhysicalAddress",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#record%20new%20customer",
+    "processName": "record new customer"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Name",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#record%20new%20customer",
+    "processName": "record new customer"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#TelephoneNumber",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#record%20new%20customer",
+    "processName": "record new customer"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Character",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#record%20new%20customer",
+    "processName": "record new customer"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#EmailAddress",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#record%20new%20customer",
+    "processName": "record new customer"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#EmailAddress",
+    "data": "http://www.example.org/my-db/employees#email_address",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#PhysicalAddress",
+    "data": "http://www.example.org/my-db/customers#address",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Job",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#PhysicalAddress",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Name",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#TelephoneNumber",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#Character",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#EmailAddress",
+    "data": "http://www.example.org/my-db/customers-TriplesMap",
+    "process": "http://www.example.org/test#Northwind%20Ordering%20System",
+    "processName": "Northwind Ordering System"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#PhysicalAddress",
+    "data": "http://www.example.org/my-db/customers#address",
+    "process": "http://www.example.org/test#find%20nearest%20warehouse",
+    "processName": "find nearest warehouse"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#EmailAddress",
+    "data": "http://www.example.org/my-db/employees#email_address",
+    "process": "http://www.example.org/test#manage%20inventory",
+    "processName": "manage inventory"
+  },
+  {
+    "category": "http://www.w3.org/ns/dpv#PhysicalAddress",
+    "data": "http://www.example.org/my-db/customers#address",
+    "process": "http://www.example.org/test#deliver",
+    "processName": "deliver"
+  }
+]

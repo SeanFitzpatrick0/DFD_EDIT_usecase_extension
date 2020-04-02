@@ -1,0 +1,14 @@
+PREFIX BASE: <http://www.example.org/test#>
+SELECT DISTINCT ?tableName
+WHERE {
+    ?dataStore a dfd:DataStore .
+    ?dataStore BASE:associatedData ?data .
+    ?data (rr:predicateObjectMap/rr:predicate)?/BASE:isOfPersonalDataCategory ?category .
+    ?data (^rr:predicate/^rr:predicateObjectMap)?/rr:logicalTable/rr:tableName ?tableName .
+}
+
+[
+  {
+    "tableName": "customers"
+  }
+]
