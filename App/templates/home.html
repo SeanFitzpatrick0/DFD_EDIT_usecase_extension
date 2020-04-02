@@ -30,9 +30,12 @@
 </section>
 
 <!-- Walk through Gif -->
-<div class="row justify-content-md-center">
-    <img width="60%" src="{{ url_for('static', filename='img/create_dfd_demo.gif') }}" alt="create dfd demo"
-        class="img-thumbnail" />
+<div class="container">
+
+    <div class="row justify-content-md-center">
+        <img width="60%" src="{{ url_for('static', filename='img/create_dfd_demo.gif') }}" alt="create dfd demo"
+            class="img-thumbnail" />
+    </div>
 </div>
 <br />
 
@@ -41,159 +44,185 @@
     <h3>Getting Started</h3>
 </div>
 
-<div id="getting_started" class="row justify-content-md-center">
-    <div class="col-8">
-        <ul class="list-group list-group-flush p-3">
-            <li class="list-group-item">
-                Create an <a href="{{ url_for('register') }}">account</a> to start creating diagrams.
-            </li>
-            <li class="list-group-item">
-                Once you have an account, go to the <a href="{{ url_for('editor') }}">editor</a>
-                page and begin to create a diagram by dragging items from the toolbar.
-            </li>
-            <li class="list-group-item">
-                Give your diagram a title by entering a value in the top text
-                bar. This can be changed at any time by changing this value and
-                saving the diagram.
-            </li>
-            <li class="list-group-item">
-                Save your progress by pressing the save button and entering an
-                edit comment. You can view the edit logs and authors of edits in
-                your account page.
-            </li>
-            <li class="list-group-item">
-                Decompose a process by selecting it and pressing the add sub
-                process on the toolbar.
-                This will add that sub process to the diagram hierarchy on the right.
-                Switch diagrams by selecting it from the Diagram hierarchy.
-            </li>
-            <li class="list-group-item">
-                View any validation errors by hovering your mouse over the alert
-                sign by any invalid cells. This will tell you why the cell is
-                invalid and how to fix it.
-            </li>
-            <li class="list-group-item">
-                You can see your created diagrams and diagrams that you have
-                been invited to on your <a href="{{ url_for('account') }}">account</a> page.
-                By selecting 'Manage Diagram' under any diagram you can view the creator of the
-                diagram and its editors, invite new editors remove existing
-                editors, and view the edit log for the diagram.
-            </li>
-            <li class="list-group-item">
-                You can export an RDF representation of your diagram in TURTLE
-                format by pressing the export button on the editor page. This
-                will download a .ttl file containing the RDF representation. See
-                an example output file
-                <a href="{{ url_for('static', filename='example_export.ttl') }}">here</a>.
-            </li>
-        </ul>
+<div class="container">
+
+
+    <div id="getting_started" class="row justify-content-md-center">
+        <div class="col-8">
+            <ul class="list-group list-group-flush p-3">
+                <li class="list-group-item">
+                    Create an <a href="{{ url_for('register') }}">account</a> to start creating diagrams.
+                </li>
+                <li class="list-group-item">
+                    Once you have an account, go to the <a href="{{ url_for('editor') }}">editor</a>
+                    page and begin to create a diagram by dragging items from the toolbar.
+                </li>
+                <li class="list-group-item">
+                    Give your diagram a title by entering a value in the top text
+                    bar. This can be changed at any time by changing this value and
+                    saving the diagram.
+                </li>
+                <li class="list-group-item">
+                    Save your progress by pressing the save button and entering an
+                    edit comment. You can view the edit logs and authors of edits in
+                    your account page.
+                </li>
+                <li class="list-group-item">
+                    Decompose a process by selecting it and pressing the add sub
+                    process on the toolbar.
+                    This will add that sub process to the diagram hierarchy on the right.
+                    Switch diagrams by selecting it from the Diagram hierarchy.
+                </li>
+                <li class="list-group-item">
+                    View any validation errors by hovering your mouse over the alert
+                    sign by any invalid cells. This will tell you why the cell is
+                    invalid and how to fix it.
+                </li>
+                <li class="list-group-item">
+                    You can see your created diagrams and diagrams that you have
+                    been invited to on your <a href="{{ url_for('account') }}">account</a> page.
+                    By selecting 'Manage Diagram' under any diagram you can view the creator of the
+                    diagram and its editors, invite new editors remove existing
+                    editors, and view the edit log for the diagram.
+                </li>
+                <li class="list-group-item">
+                    You can export an RDF representation of your diagram in TURTLE
+                    format by pressing the export button on the editor page. This
+                    will download a .ttl file containing the RDF representation. See
+                    an example output file
+                    <a href="{{ url_for('static', filename='example_export.ttl') }}">here</a>.
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <br>
 
 <!-- Use case extension details -->
-<div id="use_case_demo" class="row justify-content-md-center">
-    <!-- Extension summary -->
-    <div class="col-8 mt-4">
-        <div class="text-center">
-            <h3>Extension for GDPR-aware DFD Modelling </h3>
+<div class="container">
+    <div id="use_case_demo" class="row justify-content-md-center">
+        <!-- Extension summary -->
+        <div class="col-8 mt-4">
+            <div class="text-center">
+                <h3>Extension for GDPR-aware DFD Modelling </h3>
+            </div>
+            <p>This is an extension of the <a href='https://github.com/SeanFitz1997/DFD_EDIT' target="_blank">base DFD
+                    Edit
+                    application</a> to demonstrate the ability for the
+                Linked Data
+                representation of the users DFD to integrate with an RDF representation of their database and with GDPR
+                personal data category definitions. See my <a
+                    href="https://github.com/SeanFitz1997/DFD_EDIT_usecase_extension" target="_blank">report</a> for
+                more
+                details.</p>
+
+            <p>This extension uses an <a href="https://www.w3.org/TR/r2rml/" target="_blank">R2RML</a> mapping to
+                represent
+                the relational database as RDF. A <a href="https://github.com/dalers/mywind" target="_blank">MySQL
+                    implementation</a> of the Northwind database was used for this demonstration. An R2RML mapping of
+                this
+                database was created using this <a href='https://github.com/chrdebru/direct-mapping'
+                    target="_blank">tool</a>. If you would like to incorporate your own database,
+                create an R2RML mapping
+                with that tool and
+                replace <a
+                    href="https://github.com/SeanFitz1997/DFD_EDIT_usecase_extension/blob/master/App/rdf_graphs/database_r2rml_mapping.ttl"
+                    target="_blank">this</a> file with your mapping.</p>
+
+            <p>The columns in this database were annotated with the personal data catagories that they use. The <a
+                    href="https://www.w3.org/ns/dpv/" target="_blank">DPV</a> personal data catagories were used for
+                this
+                annotation. See this <a
+                    href="https://github.com/SeanFitz1997/DFD_EDIT_usecase_extension/blob/master/App/rdf_graphs/personal_data.ttl"
+                    target="_blank">file</a>
+                for
+                an example of the
+                annotation for the personal data in the Northwind database. Replace this file with the annotations of
+                the
+                personal data catagories of you own database, if you are incorporating your own database. The collection
+                of
+                personal data catagories defined by DPV can be accessed <a
+                    href="https://www.w3.org/ns/dpv/#vocab-personal-data-categories" target="_blank">here</a>.</p>
         </div>
-        <p>This is an extension of the <a href='https://github.com/SeanFitz1997/DFD_EDIT' target="_blank">base DFD Edit
-                application</a> to demonstrate the ability for the
-            Linked Data
-            representation of the users DFD to integrate with an RDF representation of their database and with GDPR
-            personal data category definitions. See my <a
-                href="https://github.com/SeanFitz1997/DFD_EDIT_usecase_extension" target="_blank">report</a> for more
-            details.</p>
 
-        <p>This extension uses an <a href="https://www.w3.org/TR/r2rml/" target="_blank">R2RML</a> mapping to represent
-            the relational database as RDF. A <a href="https://github.com/dalers/mywind" target="_blank">MySQL
-                implementation</a> of the Northwind database was used for this demonstration. An R2RML mapping of this
-            database was created using this <a href='https://github.com/chrdebru/direct-mapping'
-                target="_blank">tool</a>. If you would like to incorporate your own database,
-            create an R2RML mapping
-            with that tool and
-            replace <a href="#">this</a> file with your mapping.</p>
+        <!-- Personal Data Identification -->
+        <div class="col-8 mt-5">
+            <div class="text-center">
+                <h4>Personal Data Identification</h4>
+            </div>
+            <p>This extension will allow the user to annotate the data flows and data stores in their DFD
+                with the URI of a column or table in their database.
+            </p>
+            <p>Select a data flow or data store in your DFD and a form will be shown. This form allows you to associate
+                your
+                selected item with the database item that it uses.</p>
+            <p>We can associate the 'email' data flow with the email column in the customers table by inputting the the
+                URI
+                for
+                that column. <span
+                    class="badge badge-secondary">http://www.example.org/my-db/customers#email_address</span>
+            </p>
+            <p>We can associate the 'customer records' data store with the entire customers table by inputting the the
+                URI
+                for the table. <span
+                    class="badge badge-secondary">http://www.example.org/my-db/customers-TriplesMap</span>
+            </p>
+            <p>Users can remove the data association by leaving this field blank and pressing update.</p>
+            <p>Items using personal data will be highlighted to the user in orange. You can inspect the personal data
+                categories used by an item by selecting it.</p>
 
-        <p>The columns in this database were annotated with the personal data catagories that they use. The <a
-                href="#">DPV</a> personal data catagories were used for this annotation. See this <a href="#">file</a>
-            for
-            an example of the
-            annotation for the personal data in the Northwind database. Replace this file with the annotations of the
-            personal data catagories of you own database, if you are incorporating your own database. The collection of
-            personal data catagories defined by DPV can be accessed <a href="#">here</a>.</p>
-    </div>
+            <img src="{{ url_for('static', filename='img/personal_data_highlight.png') }}"
+                alt="personal data highlight screenshot" class="img-thumbnail" />
 
-    <!-- Personal Data Identification -->
-    <div class="col-8 mt-5">
-        <div class="text-center">
-            <h4>Personal Data Identification</h4>
         </div>
-        <p>This extension will allow the user to annotate the data flows and data stores in their DFD
-            with the URI of a column or table in their database.
-        </p>
-        <p>Select a data flow or data store in your DFD and a form will be shown. This form allows you to associate your
-            selected item with the database item that it uses.</p>
-        <p>We can associate the 'email' data flow with the email column in the customers table by inputting the the URI
-            for
-            that column. <span class="badge badge-secondary">http://www.example.org/my-db/customers#email_address</span>
-        </p>
-        <p>We can associate the 'customer records' data store with the entire customers table by inputting the the URI
-            for the table. <span class="badge badge-secondary">http://www.example.org/my-db/customers-TriplesMap</span>
-        </p>
-        <p>Users can remove the data association by leaving this field blank and pressing update.</p>
-        <p>Items using personal data will be highlighted to the user in orange. You can inspect the personal data
-            categories used by an item by selecting it.</p>
 
-        <img src="{{ url_for('static', filename='img/personal_data_highlight.png') }}"
-            alt="personal data highlight screenshot" class="img-thumbnail" />
+        <!-- Query the Knowledge Base -->
+        <div class="col-8 mt-5">
+            <div class="text-center">
+                <h4>Query the Knowledge Base</h4>
+            </div>
+            <p>By representing the user's DFD and it personal data uses as Linked Data, we can query this Knowledge Base
+                using <a href="https://www.w3.org/TR/rdf-sparql-query/" target="_blank">SPARQL</a>.
+            </p>
+            <p>Press the 'Query' button to show a form where you can input SPARQL that you can then execute. This
+                feature
+                will highlight all the items that you select in your query and display the result as JSON.</p>
 
-    </div>
+            <!-- Example SPARQL Queries -->
+            <div id="sample_sparql_queries">
+                <h5>Example SPAQRL Queries</h5>
+                <br />
 
-    <!-- Query the Knowledge Base -->
-    <div class="col-8 mt-5">
-        <div class="text-center">
-            <h4>Query the Knowledge Base</h4>
-        </div>
-        <p>By representing the user's DFD and it personal data uses as Linked Data, we can query this Knowledge Base
-            using <a href="#">SPARQL</a>.
-        </p>
-        <p>Press the 'Query' button to show a form where you can input SPARQL that you can then execute. This feature
-            will highlight all the items that you select in your query and display the result as JSON.</p>
+                <div class="accordion" id="query1">
+                    <!-- Example Query 1 -->
+                    <div class="card">
+                        <div class="card-header" id="query1">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#query1_collapse" aria-expanded="true" aria-controls="query1_collapse">
+                                    Query1: Select all of the data flows and data stores that have not been annotated
+                                </button>
+                            </h2>
+                        </div>
 
-        <!-- Example SPARQL Queries -->
-        <div id="sample_sparql_queries">
-            <h5>Example SPAQRL Queries</h5>
-            <br />
+                        <div id="query1_collapse" class="collapse show" aria-labelledby="query1" data-parent="#query1">
+                            <div class="card-body">
+                                <!-- Explanation -->
+                                <p>
+                                    If we missed any items during this annotation process, they will not be highlighted,
+                                    and
+                                    will not be alerted of their personal data usage. To ensure that we have correctly
+                                    annotated
+                                    all of the data flows and data stores in our DFD we can execute this SPARQL query.
+                                    This
+                                    query will select all of the data flows and data stores that have not
+                                    been annotated with a data URI and highlight them on the DFD. The designer can
+                                    then inspect these highlighted items to ensure that there were no annotations
+                                    missed.
+                                </p>
 
-            <div class="accordion" id="query1">
-                <!-- Example Query 1 -->
-                <div class="card">
-                    <div class="card-header" id="query1">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
-                                data-target="#query1_collapse" aria-expanded="true" aria-controls="query1_collapse">
-                                Query1: Select all of the data flows and data stores that have not been annotated
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="query1_collapse" class="collapse show" aria-labelledby="query1" data-parent="#query1">
-                        <div class="card-body">
-                            <!-- Explanation -->
-                            <p>
-                                If we missed any items during this annotation process, they will not be highlighted,
-                                and
-                                will not be alerted of their personal data usage. To ensure that we have correctly
-                                annotated
-                                all of the data flows and data stores in our DFD we can execute this SPARQL query. This
-                                query will select all of the data flows and data stores that have not
-                                been annotated with a data URI and highlight them on the DFD. The designer can
-                                then inspect these highlighted items to ensure that there were no annotations missed.
-                            </p>
-
-                            <!-- Query -->
-                            <pre class="border rounded">
+                                <!-- Query -->
+                                <pre class="border rounded">
 PREFIX BASE: &lt;http://www.example.org/test#&gt;
 SELECT DISTINCT ?item
 WHERE {
@@ -201,17 +230,17 @@ WHERE {
     OPTIONAL { ?item BASE:associatedData ?data . }
     FILTER (!BOUND(?data))
 }</pre>
-                            <!-- Screenshot -->
-                            <div>
-                                <h5>Query Screenshot</h5>
-                                <img src="{{ url_for('static', filename='img/query1_screenshot.png') }}"
-                                    alt="query1 screenshot" class="img-thumbnail" />
-                            </div>
+                                <!-- Screenshot -->
+                                <div>
+                                    <h5>Query Screenshot</h5>
+                                    <img src="{{ url_for('static', filename='img/query1_screenshot.png') }}"
+                                        alt="query1 screenshot" class="img-thumbnail" />
+                                </div>
 
-                            <!-- JSON Output -->
-                            <div class="mt-4">
-                                <h5>JSON Output</h5>
-                                <pre class="border rounded">
+                                <!-- JSON Output -->
+                                <div class="mt-4">
+                                    <h5>JSON Output</h5>
+                                    <pre class="border rounded">
 [
   {
     "item": "http://www.example.org/test#f6"
@@ -220,36 +249,41 @@ WHERE {
     "item": "http://www.example.org/test#f35"
   },...
 ]</pre>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Example Query 2 -->
-                <div class="card">
-                    <div class="card-header" id="query2">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
-                                data-target="#query2_collapse" aria-expanded="true" aria-controls="query2_collapse">
-                                Query2: Identifying the Processes that use Personal Data
-                            </button>
-                        </h2>
-                    </div>
+                    <!-- Example Query 2 -->
+                    <div class="card">
+                        <div class="card-header" id="query2">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#query2_collapse" aria-expanded="true" aria-controls="query2_collapse">
+                                    Query2: Identifying the Processes that use Personal Data
+                                </button>
+                            </h2>
+                        </div>
 
-                    <div id="query2_collapse" class="collapse" aria-labelledby="query2" data-parent="#query2">
-                        <div class="card-body">
-                            <!-- Explanation -->
-                            <p>
-                                Organisations must notify the data subject on what personal data will be processed and
-                                what processing operation will be conducted on the data. Due to this requirement, the
-                                designer of the system must identify what processing is performed on the personal data
-                                in their system. This application will allow the designer to identify the processes that
-                                use personal data in the DFD and list the types of personal data that it uses, aiding in
-                                this task.
-                            </p>
+                        <div id="query2_collapse" class="collapse" aria-labelledby="query2" data-parent="#query2">
+                            <div class="card-body">
+                                <!-- Explanation -->
+                                <p>
+                                    Organisations must notify the data subject on what personal data will be processed
+                                    and
+                                    what processing operation will be conducted on the data. Due to this requirement,
+                                    the
+                                    designer of the system must identify what processing is performed on the personal
+                                    data
+                                    in their system. This application will allow the designer to identify the processes
+                                    that
+                                    use personal data in the DFD and list the types of personal data that it uses,
+                                    aiding in
+                                    this task.
+                                </p>
 
-                            <!-- Query -->
-                            <pre class="border rounded">
+                                <!-- Query -->
+                                <pre class="border rounded">
 PREFIX BASE: &lt;http://www.example.org/test#&gt;
 SELECT DISTINCT ?process ?processName ?data ?category
 WHERE {
@@ -258,17 +292,17 @@ WHERE {
     ?process ^dfd:to/BASE:associatedData ?data .
     ?data (rr:predicateObjectMap/rr:predicate)?/BASE:isOfPersonalDataCategory ?category .
 }</pre>
-                            <!-- Screenshot -->
-                            <div>
-                                <h5>Query Screenshot</h5>
-                                <img src="{{ url_for('static', filename='img/query2_screenshot.png') }}"
-                                    alt="query2 screenshot" class="img-thumbnail" />
-                            </div>
+                                <!-- Screenshot -->
+                                <div>
+                                    <h5>Query Screenshot</h5>
+                                    <img src="{{ url_for('static', filename='img/query2_screenshot.png') }}"
+                                        alt="query2 screenshot" class="img-thumbnail" />
+                                </div>
 
-                            <!-- JSON Output -->
-                            <div class="mt-4">
-                                <h5>JSON Output</h5>
-                                <pre class="border rounded">
+                                <!-- JSON Output -->
+                                <div class="mt-4">
+                                    <h5>JSON Output</h5>
+                                    <pre class="border rounded">
 [
   {
     "category": "http://www.w3.org/ns/dpv#EmailAddress",
@@ -284,36 +318,39 @@ WHERE {
   },
 ...
 ]</pre>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Example Query 3 -->
-                <div class="card">
-                    <div class="card-header" id="query3">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
-                                data-target="#query3_collapse" aria-expanded="true" aria-controls="query3_collapse">
-                                Query3: Identifying Tables Storing Personal Data
-                            </button>
-                        </h2>
-                    </div>
+                    <!-- Example Query 3 -->
+                    <div class="card">
+                        <div class="card-header" id="query3">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#query3_collapse" aria-expanded="true" aria-controls="query3_collapse">
+                                    Query3: Identifying Tables Storing Personal Data
+                                </button>
+                            </h2>
+                        </div>
 
-                    <div id="query3_collapse" class="collapse" aria-labelledby="query3" data-parent="#query3">
-                        <div class="card-body">
+                        <div id="query3_collapse" class="collapse" aria-labelledby="query3" data-parent="#query3">
+                            <div class="card-body">
 
-                            <!-- Explanation -->
-                            <p>
-                                Organisations must ensure that they are able to restore any loss or damage to the user’s
-                                personal data. To ensure this the organisation must have a backup procedure for tables
-                                containing personal data. In order to determine this, the designer must identify which
-                                tables are used to store personal information in the system. This tool can aid a
-                                designer in this task. We can find out this information with this SPARQL query.
-                            </p>
+                                <!-- Explanation -->
+                                <p>
+                                    Organisations must ensure that they are able to restore any loss or damage to the
+                                    user’s
+                                    personal data. To ensure this the organisation must have a backup procedure for
+                                    tables
+                                    containing personal data. In order to determine this, the designer must identify
+                                    which
+                                    tables are used to store personal information in the system. This tool can aid a
+                                    designer in this task. We can find out this information with this SPARQL query.
+                                </p>
 
-                            <!-- Query -->
-                            <pre class="border rounded">
+                                <!-- Query -->
+                                <pre class="border rounded">
 PREFIX BASE: &lt;http://www.example.org/test#&gt;
 SELECT DISTINCT ?tableName
 WHERE {
@@ -323,47 +360,53 @@ WHERE {
     ?data (^rr:predicate/^rr:predicateObjectMap)?/rr:logicalTable/rr:tableName ?tableName .
 }</pre>
 
-                            <!-- JSON Output -->
-                            <div class="mt-4">
-                                <h5>JSON Output</h5>
-                                <pre class="border rounded">
+                                <!-- JSON Output -->
+                                <div class="mt-4">
+                                    <h5>JSON Output</h5>
+                                    <pre class="border rounded">
 [
     {
         "tableName": "customers"
     }
 ]</pre>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Example Query 4 -->
-                <div class="card">
-                    <div class="card-header" id="query4">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
-                                data-target="#query4_collapse" aria-expanded="true" aria-controls="query4_collapse">
-                                Query4: Identify Personal Data Leaving the System
-                            </button>
-                        </h2>
-                    </div>
+                    <!-- Example Query 4 -->
+                    <div class="card">
+                        <div class="card-header" id="query4">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#query4_collapse" aria-expanded="true" aria-controls="query4_collapse">
+                                    Query4: Identify Personal Data Leaving the System
+                                </button>
+                            </h2>
+                        </div>
 
-                    <div id="query4_collapse" class="collapse" aria-labelledby="query4" data-parent="#query4">
-                        <div class="card-body">
-                            <!-- Explanation -->
-                            <p>
-                                GDPR requires that the organisation have the explicit consent from the data subject to
-                                allow them to share their personal data with a third party. The designer can use this
-                                tool to aid in ensuring that they are not sharing data that they lack the consent to.
-                                This SPARQL query will identify all the outgoing data flows of the system that use
-                                personal data, the database item that they use and the external entity that the data is
-                                shared with. Those selected data flows and external entities will be highlighted to the
-                                user. The designer can then take steps to ensure that they have the required consent to
-                                share the identified data with the third party. If not, they must alter their system
-                                design prior to implementation to avoid being in breach.
-                            </p>
-                            <!-- Query -->
-                            <pre class="border rounded">
+                        <div id="query4_collapse" class="collapse" aria-labelledby="query4" data-parent="#query4">
+                            <div class="card-body">
+                                <!-- Explanation -->
+                                <p>
+                                    GDPR requires that the organisation have the explicit consent from the data subject
+                                    to
+                                    allow them to share their personal data with a third party. The designer can use
+                                    this
+                                    tool to aid in ensuring that they are not sharing data that they lack the consent
+                                    to.
+                                    This SPARQL query will identify all the outgoing data flows of the system that use
+                                    personal data, the database item that they use and the external entity that the data
+                                    is
+                                    shared with. Those selected data flows and external entities will be highlighted to
+                                    the
+                                    user. The designer can then take steps to ensure that they have the required consent
+                                    to
+                                    share the identified data with the third party. If not, they must alter their system
+                                    design prior to implementation to avoid being in breach.
+                                </p>
+                                <!-- Query -->
+                                <pre class="border rounded">
 PREFIX BASE: &lt;http://www.example.org/test#&gt;
 SELECT DISTINCT ?dataFlow ?sharedData ?thirdParty
 WHERE {
@@ -374,17 +417,17 @@ WHERE {
     ?sharedData(rr:predicateObjectMap/rr:predicate)?/BASE:isOfPersonalDataCategory ?category .
 }</pre>
 
-                            <!-- Screenshot -->
-                            <div>
-                                <h5>Query Screenshot</h5>
-                                <img src="{{ url_for('static', filename='img/query4_screenshot.png') }}"
-                                    alt="query4 screenshot" class="img-thumbnail" />
-                            </div>
+                                <!-- Screenshot -->
+                                <div>
+                                    <h5>Query Screenshot</h5>
+                                    <img src="{{ url_for('static', filename='img/query4_screenshot.png') }}"
+                                        alt="query4 screenshot" class="img-thumbnail" />
+                                </div>
 
-                            <!-- JSON Output -->
-                            <div class="mt-4">
-                                <h5>JSON Output</h5>
-                                <pre class="border rounded">
+                                <!-- JSON Output -->
+                                <div class="mt-4">
+                                    <h5>JSON Output</h5>
+                                    <pre class="border rounded">
 [
     {
         "dataFlow": "http://www.example.org/test#f2",
@@ -393,11 +436,12 @@ WHERE {
     },
     …,
 ]</pre>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
