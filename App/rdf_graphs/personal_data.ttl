@@ -1,6 +1,24 @@
 @prefix :      <http://www.example.org/test#> .
 @prefix dpv: <http://www.w3.org/ns/dpv#> .
 
+# Employees
+<http://www.example.org/my-db/employees#notes> :isOfPersonalDataCategory dpv:Character.
+<http://www.example.org/my-db/employees#address> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/employees#zip_postal_code> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/employees#state_province> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/employees#email_address> :isOfPersonalDataCategory dpv:EmailAddress.
+<http://www.example.org/my-db/employees#job_title> :isOfPersonalDataCategory dpv:Job.
+<http://www.example.org/my-db/employees#mobile_phone> :isOfPersonalDataCategory dpv:TelephoneNumber.
+<http://www.example.org/my-db/employees#city> :isOfPersonalDataCategory dpv:PhysicalAddress.
+<http://www.example.org/my-db/employees#company> :isOfPersonalDataCategory dpv:Job.
+<http://www.example.org/my-db/employees#home_phone> :isOfPersonalDataCategory dpv:TelephoneNumber.
+<http://www.example.org/my-db/employees#web_page> :isOfPersonalDataCategory dpv:Character.
+<http://www.example.org/my-db/employees#first_name> :isOfPersonalDataCategory dpv:Name.
+<http://www.example.org/my-db/employees#business_phone> :isOfPersonalDataCategory dpv:TelephoneNumber.
+<http://www.example.org/my-db/employees#last_name> :isOfPersonalDataCategory dpv:Name.
+<http://www.example.org/my-db/employees#country_region> :isOfPersonalDataCategory dpv:PhysicalAddress.
+
+
 # Customers
 <http://www.example.org/my-db/customers#city> :isOfPersonalDataCategory dpv:PhysicalAddress.
 <http://www.example.org/my-db/customers#home_phone> :isOfPersonalDataCategory dpv:TelephoneNumber.
@@ -16,6 +34,3 @@
 <http://www.example.org/my-db/customers#first_name> :isOfPersonalDataCategory dpv:Name.
 <http://www.example.org/my-db/customers#mobile_phone> :isOfPersonalDataCategory  dpv:TelephoneNumber.
 <http://www.example.org/my-db/customers#zip_postal_code> :isOfPersonalDataCategory  dpv:PhysicalAddress.
-
-# Employees
-<http://www.example.org/my-db/employees#email_address> :isOfPersonalDataCategory dpv:EmailAddress.
