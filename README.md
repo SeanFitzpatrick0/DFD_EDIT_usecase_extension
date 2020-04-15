@@ -2,7 +2,7 @@
 
 This is an extension of the [base DFD Edit application](https://github.com/SeanFitz1997/DFD_EDIT) to demonstrate the ability for the Linked Data representation of the users DFD to integrate with an RDF representation of their database and with GDPR personal data category definitions. See my report for more details.
 
-The live site can be be accessed **[Here](http://dfdedit.tk/)**.
+The live site can be be accessed **[Here](http://dfdedit.com/)**.
 
 ## Screen Shots
 
